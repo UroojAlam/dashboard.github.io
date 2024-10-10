@@ -204,15 +204,23 @@
             </div>
         </nav>
         <h1>Data from LabVIEW</h1>
-        <table id="data-table">
-            <thead>
-                <tr>
-                    <th>Variable</th>
-                    <th>Value</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
+       
+    <button class="btn bg-gradient-primary my-1 me-1" id="fetch-latest">Get Latest Data</button>
+    <button class="btn bg-gradient-primary my-1 me-1" id="fetch-history">Get All Historical Data</button>
+    <input type="text" class="form-control border-0 ps-3" id="sensor-input" placeholder="Enter sensor name">
+    <button class="btn bg-gradient-primary my-1 me-1" id="fetch-specific">Get Sensor History</button>
+
+    <table id="data-table">
+        <thead>
+            <tr>
+                <th>Variable</th>
+                <th>Value</th>
+                <th>Timestamp</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
         <div class="container-fluid pt-3">
             <div class="row removable">
                 <div class="col-lg-12">
@@ -477,21 +485,45 @@
     <script>
         const tableBody = document.querySelector('#data-table tbody');
 
-    // Fetch the latest data from the server
+    // Function to fetch latest data
     async function fetchLatestData() {
-        const response = await fetch('/get-latest-data');
-        const data = await response.json();
-        displayData(data);
-    }
-
-    // Display the latest data in the table
-    function displayData(data) {
-        tableBody.innerHTML = ''; // Clear the previous data
-        if (data) {
-            const row = `<tr><td>${data.variable}</td><td>${data.value}</td></tr>`;
-            tableBody.insertAdjacentHTML('beforeend', row);
+            const response = await fetch('/get-latest-data');
+            const data = await response.json();
+            displayData([data]); // Wrap in an array for single row display
         }
-    }
+
+        // Function to fetch all historical data
+        async function fetchAllHistory() {
+            const response = await fetch('/get-all-history');
+            const data = await response.json();
+            displayData(data);
+        }
+
+        // Function to fetch historical data for a specific sensor
+        async function fetchSpecificSensor() {
+            const sensor = document.getElementById('sensor-input').value;
+            const response = await fetch(`/get-history/${sensor}`);
+            const data = await response.json();
+            displayData(data);
+        }
+
+        // Display data in table format
+        function displayData(data) {
+            tableBody.innerHTML = '';
+            data.forEach(entry => {
+                const row = `<tr>
+                    <td>${entry.variable}</td>
+                    <td>${entry.value}</td>
+                    <td>${entry.timestamp}</td>
+                </tr>`;
+                tableBody.insertAdjacentHTML('beforeend', row);
+            });
+        }
+
+        // Event listeners for buttons
+        document.getElementById('fetch-latest').addEventListener('click', fetchLatestData);
+        document.getElementById('fetch-history').addEventListener('click', fetchAllHistory);
+        document.getElementById('fetch-specific').addEventListener('click', fetchSpecificSensor);
         // // Simulate fetching data from the server via a GET request
         // async function fetchLabviewData() {
         //     const response = await fetch('/get-data');
@@ -509,7 +541,7 @@
         // }
 
         // Polling for new data every 5 seconds
-        setInterval(fetchLabviewData, 2000);
+       // setInterval(fetchLatestData, 2000);
     </script>
     <script>
         if (document.querySelector("#chart-bars")) {
