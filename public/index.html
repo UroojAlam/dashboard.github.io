@@ -477,21 +477,36 @@
     <script>
         const tableBody = document.querySelector('#data-table tbody');
 
-        // Simulate fetching data from the server via a GET request
-        async function fetchLabviewData() {
-            const response = await fetch('/get-data');
-            const data = await response.json();
-            displayData(data);
-        }
+    // Fetch the latest data from the server
+    async function fetchLatestData() {
+        const response = await fetch('/get-latest-data');
+        const data = await response.json();
+        displayData(data);
+    }
 
-        // Display data in table format
-        function displayData(data) {
-            tableBody.innerHTML = '';
-            for (const [key, value] of Object.entries(data)) {
-                const row = `<tr><td>${key}</td><td>${value}</td></tr>`;
-                tableBody.insertAdjacentHTML('beforeend', row);
-            }
+    // Display the latest data in the table
+    function displayData(data) {
+        tableBody.innerHTML = ''; // Clear the previous data
+        if (data) {
+            const row = `<tr><td>${data.variable}</td><td>${data.value}</td></tr>`;
+            tableBody.insertAdjacentHTML('beforeend', row);
         }
+    }
+        // // Simulate fetching data from the server via a GET request
+        // async function fetchLabviewData() {
+        //     const response = await fetch('/get-data');
+        //     const data = await response.json();
+        //     displayData(data);
+        // }
+
+        // // Display data in table format
+        // function displayData(data) {
+        //     tableBody.innerHTML = '';
+        //     for (const [key, value] of Object.entries(data)) {
+        //         const row = `<tr><td>${key}</td><td>${value}</td></tr>`;
+        //         tableBody.insertAdjacentHTML('beforeend', row);
+        //     }
+        // }
 
         // Polling for new data every 5 seconds
         setInterval(fetchLabviewData, 2000);
