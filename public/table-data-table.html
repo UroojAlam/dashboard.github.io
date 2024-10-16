@@ -13,7 +13,7 @@
     <meta property="og:url" content="http://pratikborsadiya.in/blog/vali-admin">
     <meta property="og:image" content="http://pratikborsadiya.in/blog/vali-admin/hero-social.png">
     <meta property="og:description" content="Vali is a responsive and free admin theme built with Bootstrap 5, SASS and PUG.js. It's fully customizable and modular.">
-    <title>Blank Page - Vali Admin</title>
+    <title>Data Table - Vali Admin</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -106,15 +106,15 @@
             <li><a class="treeview-item" href="form-samples.html"><i class="icon bi bi-circle-fill"></i> Form Samples</a></li>
           </ul>
         </li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon bi bi-table"></i><span class="app-menu__label">Tables</span><i class="treeview-indicator bi bi-chevron-right"></i></a>
+        <li class="treeview is-expanded"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon bi bi-table"></i><span class="app-menu__label">Tables</span><i class="treeview-indicator bi bi-chevron-right"></i></a>
           <ul class="treeview-menu">
             <li><a class="treeview-item" href="table-basic.html"><i class="icon bi bi-circle-fill"></i> Basic Tables</a></li>
-            <li><a class="treeview-item" href="table-data-table.html"><i class="icon bi bi-circle-fill"></i> Data Tables</a></li>
+            <li><a class="treeview-item active" href="table-data-table.html"><i class="icon bi bi-circle-fill"></i> Data Tables</a></li>
           </ul>
         </li>
-        <li class="treeview is-expanded"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon bi bi-file-earmark"></i><span class="app-menu__label">Pages</span><i class="treeview-indicator bi bi-chevron-right"></i></a>
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon bi bi-file-earmark"></i><span class="app-menu__label">Pages</span><i class="treeview-indicator bi bi-chevron-right"></i></a>
           <ul class="treeview-menu">
-            <li><a class="treeview-item active" href="blank-page.html"><i class="icon bi bi-circle-fill"></i> Blank Page</a></li>
+            <li><a class="treeview-item" href="blank-page.html"><i class="icon bi bi-circle-fill"></i> Blank Page</a></li>
             <li><a class="treeview-item" href="page-login.html"><i class="icon bi bi-circle-fill"></i> Login Page</a></li>
             <li><a class="treeview-item" href="page-lockscreen.html"><i class="icon bi bi-circle-fill"></i> Lockscreen Page</a></li>
             <li><a class="treeview-item" href="page-user.html"><i class="icon bi bi-circle-fill"></i> User Page</a></li>
@@ -129,18 +129,46 @@
     <main class="app-content">
       <div class="app-title">
         <div>
-          <h1><i class="bi bi-speedometer"></i> Blank Page</h1>
-          <p>Start a beautiful journey here</p>
+          <h1><i class="bi bi-table"></i> Data Table</h1>
+          <p>Table to display analytical data effectively</p>
         </div>
-        <ul class="app-breadcrumb breadcrumb">
+        <ul class="app-breadcrumb breadcrumb side">
           <li class="breadcrumb-item"><i class="bi bi-house-door fs-6"></i></li>
-          <li class="breadcrumb-item"><a href="#">Blank Page</a></li>
+          <li class="breadcrumb-item">Tables</li>
+          <li class="breadcrumb-item active"><a href="#">Data Table</a></li>
         </ul>
       </div>
       <div class="row">
         <div class="col-md-12">
           <div class="tile">
-            <div class="tile-body">Create a beautiful dashboard</div>
+            <div class="tile-body">
+              
+              <div class="table-responsive">
+                <p class="bs-component">
+                  <button class="btn btn-primary" type="button" id="fetch-latest">Get Latest Data</button>
+                  <button class="btn btn-primary" type="button" id="fetch-history">Get All Historical Data</button>
+                  <input class="app-search__input" type="search" id="sensor-input" placeholder="Enter sensor name">
+                  <button class="btn btn-primary" type="button" id="fetch-specific"> Get Sensor History</button>
+                  </p>
+                <table class="table table-hover table-bordered" id="sampleTable">
+                  <thead>
+                    <tr>
+                      <th>Variable</th>
+                      <th>Value</th>
+                      <th>Timestamp</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                   
+       
+                   
+                    <tbody></tbody>
+                    </table>
+                
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -150,6 +178,72 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
     <!-- Page specific javascripts-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/v/bs5/dt-1.13.4/datatables.min.css">
+    <!-- Data table plugin-->
+    <script type="text/javascript" src="js/plugins/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript">$('#sampleTable').DataTable();</script>
+    <script>
+      const tableBody = document.querySelector('#sampleTable tbody');
+
+  // Function to fetch latest data
+  async function fetchLatestData() {
+          const response = await fetch('/get-latest-data');
+          const data = await response.json();
+          displayData([data]); // Wrap in an array for single row display
+      }
+
+      // Function to fetch all historical data
+      async function fetchAllHistory() {
+          const response = await fetch('/get-all-history');
+          const data = await response.json();
+          displayData(data);
+      }
+
+      // Function to fetch historical data for a specific sensor
+      async function fetchSpecificSensor() {
+          const sensor = document.getElementById('sensor-input').value;
+          const response = await fetch(`/get-history/${sensor}`);
+          const data = await response.json();
+          displayData(data);
+      }
+
+      // Display data in table format
+      function displayData(data) {
+          tableBody.innerHTML = '';
+          data.forEach(entry => {
+              const row = `<tr>
+                  <td>${entry.variable}</td>
+                  <td>${entry.value}</td>
+                  <td>${entry.timestamp}</td>
+              </tr>`;
+              tableBody.insertAdjacentHTML('beforeend', row);
+          });
+      }
+
+      // Event listeners for buttons
+      document.getElementById('fetch-latest').addEventListener('click', fetchLatestData);
+      document.getElementById('fetch-history').addEventListener('click', fetchAllHistory);
+      document.getElementById('fetch-specific').addEventListener('click', fetchSpecificSensor);
+      // // Simulate fetching data from the server via a GET request
+      // async function fetchLabviewData() {
+      //     const response = await fetch('/get-data');
+      //     const data = await response.json();
+      //     displayData(data);
+      // }
+
+      // // Display data in table format
+      // function displayData(data) {
+      //     tableBody.innerHTML = '';
+      //     for (const [key, value] of Object.entries(data)) {
+      //         const row = `<tr><td>${key}</td><td>${value}</td></tr>`;
+      //         tableBody.insertAdjacentHTML('beforeend', row);
+      //     }
+      // }
+
+      // Polling for new data every 5 seconds
+     // setInterval(fetchLatestData, 2000);
+  </script>
     <!-- Google analytics script-->
     <script type="text/javascript">
       if(document.location.hostname == 'pratikborsadiya.in') {

@@ -13,7 +13,7 @@
     <meta property="og:url" content="http://pratikborsadiya.in/blog/vali-admin">
     <meta property="og:image" content="http://pratikborsadiya.in/blog/vali-admin/hero-social.png">
     <meta property="og:description" content="Vali is a responsive and free admin theme built with Bootstrap 5, SASS and PUG.js. It's fully customizable and modular.">
-    <title>Blank Page - Vali Admin</title>
+    <title>Form Samples - Vali Admin</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -100,10 +100,10 @@
             <li><a class="treeview-item" href="widgets.html"><i class="icon bi bi-circle-fill"></i> Widgets</a></li>
           </ul>
         </li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon bi bi-ui-checks"></i><span class="app-menu__label">Forms</span><i class="treeview-indicator bi bi-chevron-right"></i></a>
+        <li class="treeview is-expanded"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon bi bi-ui-checks"></i><span class="app-menu__label">Forms</span><i class="treeview-indicator bi bi-chevron-right"></i></a>
           <ul class="treeview-menu">
             <li><a class="treeview-item" href="form-components.html"><i class="icon bi bi-circle-fill"></i> Form Components</a></li>
-            <li><a class="treeview-item" href="form-samples.html"><i class="icon bi bi-circle-fill"></i> Form Samples</a></li>
+            <li><a class="treeview-item active" href="form-samples.html"><i class="icon bi bi-circle-fill"></i> Form Samples</a></li>
           </ul>
         </li>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon bi bi-table"></i><span class="app-menu__label">Tables</span><i class="treeview-indicator bi bi-chevron-right"></i></a>
@@ -112,9 +112,9 @@
             <li><a class="treeview-item" href="table-data-table.html"><i class="icon bi bi-circle-fill"></i> Data Tables</a></li>
           </ul>
         </li>
-        <li class="treeview is-expanded"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon bi bi-file-earmark"></i><span class="app-menu__label">Pages</span><i class="treeview-indicator bi bi-chevron-right"></i></a>
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon bi bi-file-earmark"></i><span class="app-menu__label">Pages</span><i class="treeview-indicator bi bi-chevron-right"></i></a>
           <ul class="treeview-menu">
-            <li><a class="treeview-item active" href="blank-page.html"><i class="icon bi bi-circle-fill"></i> Blank Page</a></li>
+            <li><a class="treeview-item" href="blank-page.html"><i class="icon bi bi-circle-fill"></i> Blank Page</a></li>
             <li><a class="treeview-item" href="page-login.html"><i class="icon bi bi-circle-fill"></i> Login Page</a></li>
             <li><a class="treeview-item" href="page-lockscreen.html"><i class="icon bi bi-circle-fill"></i> Lockscreen Page</a></li>
             <li><a class="treeview-item" href="page-user.html"><i class="icon bi bi-circle-fill"></i> User Page</a></li>
@@ -129,18 +129,147 @@
     <main class="app-content">
       <div class="app-title">
         <div>
-          <h1><i class="bi bi-speedometer"></i> Blank Page</h1>
-          <p>Start a beautiful journey here</p>
+          <h1><i class="bi bi-ui-checks"></i> Form Samples</h1>
+          <p>Sample forms</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
           <li class="breadcrumb-item"><i class="bi bi-house-door fs-6"></i></li>
-          <li class="breadcrumb-item"><a href="#">Blank Page</a></li>
+          <li class="breadcrumb-item">Forms</li>
+          <li class="breadcrumb-item"><a href="#">Sample Forms</a></li>
         </ul>
       </div>
       <div class="row">
+        <div class="col-md-6">
+          <div class="tile">
+            <h3 class="tile-title">Vertical Form</h3>
+            <div class="tile-body">
+              <form>
+                <div class="mb-3">
+                  <label class="form-label">Name</label>
+                  <input class="form-control" type="text" placeholder="Enter full name">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Email</label>
+                  <input class="form-control" type="email" placeholder="Enter email address">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Address</label>
+                  <textarea class="form-control" rows="4" placeholder="Enter your address"></textarea>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Gender</label>
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="radio" name="gender">Male
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="radio" name="gender">Female
+                    </label>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Identity Proof</label>
+                  <input class="form-control" type="file">
+                </div>
+                <div class="mb-3">
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox">I accept the terms and conditions
+                    </label>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="tile-footer">
+              <button class="btn btn-primary" type="button"><i class="bi bi-check-circle-fill me-2"></i>Register</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="#"><i class="bi bi-x-circle-fill me-2"></i>Cancel</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="tile">
+            <h3 class="tile-title">Register</h3>
+            <div class="tile-body">
+              <form class="form-horizontal">
+                <div class="mb-3 row">
+                  <label class="form-label col-md-3">Name</label>
+                  <div class="col-md-8">
+                    <input class="form-control" type="text" placeholder="Enter full name">
+                  </div>
+                </div>
+                <div class="mb-3 row">
+                  <label class="form-label col-md-3">Email</label>
+                  <div class="col-md-8">
+                    <input class="form-control col-md-8" type="email" placeholder="Enter email address">
+                  </div>
+                </div>
+                <div class="mb-3 row">
+                  <label class="form-label col-md-3">Address</label>
+                  <div class="col-md-8">
+                    <textarea class="form-control" rows="4" placeholder="Enter your address"></textarea>
+                  </div>
+                </div>
+                <div class="mb-3 row">
+                  <label class="form-label col-md-3">Gender</label>
+                  <div class="col-md-9">
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="gender">Male
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="gender">Female
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="mb-3 row">
+                  <label class="form-label col-md-3">Identity Proof</label>
+                  <div class="col-md-8">
+                    <input class="form-control" type="file">
+                  </div>
+                </div>
+                <div class="mb-3 row">
+                  <div class="col-md-8 col-md-offset-3">
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox">I accept the terms and conditions
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="tile-footer">
+              <div class="row">
+                <div class="col-md-8 col-md-offset-3">
+                  <button class="btn btn-primary" type="button"><i class="bi bi-check-circle-fill me-2"></i>Register</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="#"><i class="bi bi-x-circle-fill me-2"></i>Cancel</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearix"></div>
         <div class="col-md-12">
           <div class="tile">
-            <div class="tile-body">Create a beautiful dashboard</div>
+            <h3 class="tile-title">Subscribe</h3>
+            <div class="tile-body">
+              <form class="row">
+                <div class="mb-3 col-md-3">
+                  <label class="form-label">Name</label>
+                  <input class="form-control" type="text" placeholder="Enter your name">
+                </div>
+                <div class="mb-3 col-md-3">
+                  <label class="form-label">Email</label>
+                  <input class="form-control" type="text" placeholder="Enter your email">
+                </div>
+                <div class="mb-3 col-md-4 align-self-end">
+                  <button class="btn btn-primary" type="button"><i class="bi bi-check-circle-fill me-2"></i>Subscribe</button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
