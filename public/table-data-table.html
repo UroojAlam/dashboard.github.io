@@ -186,7 +186,7 @@
   async function fetchLatestData() {
           const response = await fetch('/get-latest-data');
           const data = await response.json();
-          displayData([data]); // Wrap in an array for single row display
+          displayData(data); // Wrap in an array for single row display
       }
 
       // Function to fetch all historical data

@@ -18,6 +18,49 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <style>
+      .arrow {
+        position: absolute;
+        width: 100px;
+        height: 5px;
+        background-color: lightgreen;
+        top: 100px;
+        left: 220px;
+        animation: moveArrow 1s infinite;
+      }
+    
+      @keyframes moveArrow {
+        0% { width: 0; }
+        100% { width: 100px; }
+      }
+      .image-container {
+  width: 120px; /* Match this to your animation width */
+  height: 240px; /* Match this to your animation height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px; /* Adjust as per your layout */
+  /*border: 2px solid #ccc; /* Optional border */
+  overflow: hidden; /* To ensure the image doesn't overflow the container */
+}
+
+.image-container img {
+  max-width: 50%;
+  max-height: 100%;
+  object-fit: contain; /* Keeps the image's aspect ratio */
+}
+      .video-container {
+  text-align: center;
+  margin-top: 20px; /* Adjust the spacing as needed */
+}
+
+video {
+  max-width: 100%;
+  height: auto;
+  /*border: 2px solid #ccc; /* Optional: for a border around the video */
+}
+
+    </style>
   </head>
   <body class="app sidebar-mini">
     <!-- Navbar-->
@@ -126,37 +169,64 @@
     <main class="app-content">
       <div class="app-title">
         <div>
-          <h1><i class="bi bi-speedometer"></i> Blank Page</h1>
-          <p>Start a beautiful journey here</p>
+          <h1><i class="bi bi-speedometer"></i> Smart On-Grid Dashboard</h1>
+          <!-- <p>Start a beautiful journey here</p> -->
         </div>
         <ul class="app-breadcrumb breadcrumb">
           <li class="breadcrumb-item"><i class="bi bi-house-door fs-6"></i></li>
-          <li class="breadcrumb-item"><a href="#">Blank Page</a></li>
+          <li class="breadcrumb-item"><a href="#">Smart On-Grid Dashboard</a></li>
         </ul>
       </div>
       <div class="row">
         <div class="col-md-12">
           <div class="tile">
-            <div class="tile-body">Create a beautiful dashboard</div>
-          </div>
+            <div class="tile-body">Smart On-Grid Dashboard</div>
+          
+      
+    
+      <div class="row">
+        
+        <div class="arrow"></div>
+        <div class="col-md-4">
+          <div id="home" style="width: 200px; height: 200px;"></div>
+        </div>
+        <div class="arrow"></div>
+        <div class="col-md-4">
+          <div id="powerGrid" style="width: 200px; height: 200px;"></div>
         </div>
       </div>
+      
+      <div class="row">
+        <div class="col-md-12">
+          <div id="batteries" style="width: 400px; height: 200px;"></div>
+          <div class="image-container" style="width: 400px; height: 200px;">
+            <img src="images/Inverter.png" alt="inverter">
+          </div>
+          <div class="video-container">
+            <video width="320" height="240" autoplay loop muted>
+              <source src="images/motor-animation.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          <div id="inverters" style="width: 400px; height: 200px;"></div>
+          <div class="image-container" style="width: 400px; height: 200px;">
+            <img src="images/SUPERCAPS.png" alt="capacitor">
+          </div>
+        </div>
+        
+      </div>
+
+    </div>
+  </div>
+</div>
     </main>
     <!-- Essential javascripts for application to work-->
     <script src="js/jquery-3.7.0.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
     <!-- Page specific javascripts-->
-    <!-- Google analytics script-->
-    <script type="text/javascript">
-      if(document.location.hostname == 'pratikborsadiya.in') {
-      	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      	ga('create', 'UA-72504830-1', 'auto');
-      	ga('send', 'pageview');
-      }
-    </script>
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.9.6/lottie.min.js"></script>
+
   </body>
 </html>
