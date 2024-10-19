@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
       renderer: 'svg',
       loop: true,
       autoplay: true,
-      path: 'assets/animations/battery.json'
+      path: 'assets/animations/battery2.json'
     });
   
     var invertersAnim = lottie.loadAnimation({

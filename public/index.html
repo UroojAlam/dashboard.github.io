@@ -35,29 +35,31 @@
       }
       .image-container {
   width: 120px; /* Match this to your animation width */
-  height: 240px; /* Match this to your animation height */
+  height: 120px; /*Match this to your animation height */
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 20px; /* Adjust as per your layout */
+  margin-left: 120px;
   /*border: 2px solid #ccc; /* Optional border */
   overflow: hidden; /* To ensure the image doesn't overflow the container */
+  /* background-color: blueviolet; */
 }
 
 .image-container img {
-  max-width: 50%;
+  max-width: 100%;
   max-height: 100%;
+  /* background-color: aqua; */
   object-fit: contain; /* Keeps the image's aspect ratio */
 }
       .video-container {
-  text-align: center;
-  margin-top: 20px; /* Adjust the spacing as needed */
-}
-
+  text-align: left; 
+  /* margin-bottom: 50px;  */
+      }
 video {
   max-width: 100%;
-  height: auto;
-  /*border: 2px solid #ccc; /* Optional: for a border around the video */
+  max-height: 100%;
+  /* border: 2px solid #ccc; Optional: for a border around the video */
 }
 
     </style>
@@ -191,15 +193,58 @@ video {
            
         <div class="row">
           <div class="col-sm-4">
-                <div id="home" style="width: 150px; height: 150px;"></div>
+                <div id="home" style="width: 150px; height: 150px;  float: right;"></div>
           </div>      
           <div class="col-sm-4"></div>
           <div class="col-sm-4">
                 <div id="powerGrid" style="width: 150px; height: 150px;"></div>
           </div> 
-          </div>    
+        </div>    
         
-        
+        <div class="row">
+          <div class="col-sm-2">
+            <div id="batteries" style="width: 200px; height: 100px;"></div>
+          </div>
+          <div class="col-sm-2"></div> 
+          <div class="col-sm-4">
+            <div class="image-container">
+              <img src="images/Inverter.png" alt="inverter"></div>
+          </div>
+          <div class="col-sm-4"></div>
+        </div>  
+
+        <div class="row">
+          <div class="col-sm-2">
+            <div id="batteries" style="width: 200px; height: 100px;"></div>
+          </div>
+          <div class="col-sm-2"></div> 
+          <div class="col-sm-4">
+            <div class="image-container">
+              <img src="images/Inverter.png" alt="inverter"></div>
+          </div>
+          <div class="col-sm-4">
+            <div class="video-container">
+              <video width="200" height="140" autoplay loop muted>
+                <source src="images/1014.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>      
+        </div>  
+
+        <div class="row">
+          <div class="col-sm-2">
+            <div id="batteries" style="width: 200px; height: 100px;"></div>
+          </div>
+          <div class="col-sm-2"></div> 
+          <div class="col-sm-4">
+            <div class="image-container">
+              <img src="images/Inverter.png" alt="inverter"></div>
+          </div>
+          <div class="col-sm-4"></div>
+        </div>
+
+          
         <!-- <div class="arrow"></div> -->
         <!-- <div class="col-md-4"> -->
       
@@ -208,15 +253,9 @@ video {
       
       <!-- <div class="row">
         <div class="col-md-12">
-          <div id="batteries" style="width: 400px; height: 200px;"></div>
-          <div class="image-container" style="width: 400px; height: 200px;">
-            <img src="images/Inverter.png" alt="inverter">
-          </div>
-          <div class="video-container">
-            <video width="320" height="240" autoplay loop muted>
-              <source src="images/motor-animation.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
+          
+          
+          
           <div id="inverters" style="width: 400px; height: 200px;"></div>
           <div class="image-container" style="width: 400px; height: 200px;">
             <img src="images/SUPERCAPS.png" alt="capacitor">
