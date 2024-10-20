@@ -32,24 +32,24 @@ document.addEventListener("DOMContentLoaded", function() {
 
    // Function to update battery animation based on percentage
    function updateBatteryAnimation(batteryIndex, percentage) {
+    
      const animation = batteryAnims[batteryIndex];
 
      // Update battery percentage - assuming the Lottie animation has frames representing different charging levels
      // E.g., from 0% to 100%, spread over 0 to 100 frames
      const frame = Math.round((percentage / 100) * animation.totalFrames); // Total frames based on battery percentage
-     animation.goToAndStop(frame, true); // Go to the frame corresponding to the battery percentage
+     console.log('Frame:', frame);
+     if(percentage==100){
+      animation.goToAndStop(frame-1, true); // Go to the frame corresponding to the battery percentage
 
+    }else{
+     animation.goToAndStop(frame, true); // Go to the frame corresponding to the battery percentage
+    }
      // Update battery color dynamically (you can change the logic based on specific requirements)
      const batteryElement = document.getElementById(`battery-${batteryIndex + 1}`);
-    //  if (percentage < 25) {
-    //    batteryElement.style.backgroundColor = 'red';
-    //  } else if (percentage < 50) {
-    //    batteryElement.style.backgroundColor = 'orange';
-    //  } else if (percentage < 75) {
-    //    batteryElement.style.backgroundColor = 'yellow';
-    //  } else {
-    //    batteryElement.style.backgroundColor = 'green';
-    //  }
+   // Update the displayed value for the battery
+  const batteryValueElement = document.getElementById(`battery-value-${batteryIndex + 1}`);
+  batteryValueElement.textContent = `${percentage} V`; // Update the value text
    }
 
    // Fetch data from the server and update the animations
@@ -63,6 +63,7 @@ document.addEventListener("DOMContentLoaded", function() {
          data.forEach(item => {
            if (item.variable.startsWith('Battery')) {
              const batteryIndex = parseInt(item.variable.split(' ')[1]) - 1; // Extract battery number
+             
              updateBatteryAnimation(batteryIndex, item.value); // Update battery animation
            }
          });
@@ -70,8 +71,8 @@ document.addEventListener("DOMContentLoaded", function() {
        .catch(error => console.error('Error fetching data:', error));
    }
 
-   // Fetch and update the battery every 5 seconds
-   setInterval(fetchDataAndUpdate, 5000);
+   // Fetch and update the battery every 3 seconds
+   setInterval(fetchDataAndUpdate, 3000);
 
     var invertersAnim = lottie.loadAnimation({
       container: document.getElementById('inverters'),

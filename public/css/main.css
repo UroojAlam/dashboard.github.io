@@ -14927,6 +14927,14 @@ textarea.form-control-lg {
   margin-left: 50px;
   font-size: 0;
 }
+.battery-value {
+  position: absolute; 
+  bottom: 30px; /* Adjust to position the text at the bottom */
+  transform: translateX(50px) rotate(-90deg); /* Center and rotate the text */
+  color: gray; /* Change color as needed */
+  font-weight: bold; /* Make the text bold */
+  font-size: 10px; /* Adjust font size */
+}
 .supercap-row {
   display: flex;
   justify-content: space-around;
