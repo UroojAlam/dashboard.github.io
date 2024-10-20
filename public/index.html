@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="Vali is a responsive and free admin theme built with Bootstrap 5, SASS and PUG.js. It's fully customizable and modular.">
-    <!-- Twitter meta-->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:site" content="@pratikborsadiya">
-    <meta property="twitter:creator" content="@pratikborsadiya">
+
     <!-- Open Graph Meta-->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Smart On-Grid Dashboard">
@@ -18,113 +14,6 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <style>
-      .arrow {
-        position: absolute;
-        width: 100px;
-        height: 5px;
-        background-color: lightgreen;
-        top: 100px;
-        left: 220px;
-        animation: moveArrow 1s infinite;
-      }
-    
-      @keyframes moveArrow {
-        0% { width: 0; }
-        100% { width: 100px; }
-      }
-      .inverter-container {
-  width: 120px; /* Match this to your animation width */
-  height: 120px; /*Match this to your animation height */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px; /* Adjust as per your layout */
-  margin-left: 120px;
-  /*border: 2px solid #ccc; /* Optional border */
-  overflow: hidden; /* To ensure the image doesn't overflow the container */
-  /* background-color: blueviolet; */
-}
-
-.inverter-container img {
-  max-width: 100%;
-  max-height: 100%;
-  /* background-color: aqua; */
-  object-fit: contain; /* Keeps the image's aspect ratio */
-}
-
-.supercap-container {
-  width: 100px; /* Match this to your animation width */
-  height: 100px; /*Match this to your animation height */
-  display: flex;
- justify-content: left;
-  /* margin-top: 20px; Adjust as per your layout */
-   margin-left: 0px; 
-  /*border: 2px solid #ccc; /* Optional border */
-  overflow: hidden; /* To ensure the image doesn't overflow the container */
-  /* background-color: blueviolet; */
-}
-
-.supercap-container img {
-  max-width: 100%;
-  max-height: 100%;
-  /* background-color: aqua; */
-  object-fit: contain; /* Keeps the image's aspect ratio */
-}
-
-.battery-container{
-  width: 100px; 
-  height: 100px;
-  margin-left: 40px;
-  font-size: 0;
-}
-.supercap-row {
-  display: flex;
-  justify-content: space-around;
-   align-items: left;
- 
-}
-
-.supercap-container {
-  flex: 1;
-  /* text-align: left; */
-}
-
-.supercap-container img {
-  max-width: 100%;
-  height: auto;
-}
-.controlboard-container {
-  width: 80px; /* Match this to your animation width */
-  height: 80px; /*Match this to your animation height */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* margin-top: 20px; Adjust as per your layout */
-  margin-left: 60px;
-  /*border: 2px solid #ccc; /* Optional border */
-  overflow: hidden; /* To ensure the image doesn't overflow the container */
-  /* background-color: blueviolet; */
-}
-
-.controlboard-container img {
-  max-width: 100%;
-  max-height: 100%;
-  /* background-color: aqua; */
-  object-fit: contain; /* Keeps the image's aspect ratio */
-}
-      .video-container {
-  justify-content: center; 
-  margin-top: 120px;
-  /* background-color: aqua;  */
-      }
-video {
-  max-width: 50%;
-  max-height: 100%;
-  /* border: 2px solid #ccc; Optional: for a border around the video */
-}
-
-    </style>
   </head>
   <body class="app sidebar-mini">
     <!-- Navbar-->
@@ -136,45 +25,7 @@ video {
           <input class="app-search__input" type="search" placeholder="Search">
           <button class="app-search__button"><i class="bi bi-search"></i></button>
         </li>
-        <!--Notification Menu-->
-        <li class="dropdown"><a class="app-nav__item" href="#" data-bs-toggle="dropdown" aria-label="Show notifications"><i class="bi bi-bell fs-5"></i></a>
-          <ul class="app-notification dropdown-menu dropdown-menu-right">
-            <li class="app-notification__title">You have 4 new notifications.</li>
-            <div class="app-notification__content">
-              <li><a class="app-notification__item" href="javascript:;"><span class="app-notification__icon"><i class="bi bi-envelope fs-4 text-primary"></i></span>
-                  <div>
-                    <p class="app-notification__message">Lisa sent you a mail</p>
-                    <p class="app-notification__meta">2 min ago</p>
-                  </div></a></li>
-              <li><a class="app-notification__item" href="javascript:;"><span class="app-notification__icon"><i class="bi bi-exclamation-triangle fs-4 text-warning"></i></span>
-                  <div>
-                    <p class="app-notification__message">Mail server not working</p>
-                    <p class="app-notification__meta">5 min ago</p>
-                  </div></a></li>
-              <li><a class="app-notification__item" href="javascript:;"><span class="app-notification__icon"><i class="bi bi-cash fs-4 text-success"></i></span>
-                  <div>
-                    <p class="app-notification__message">Transaction complete</p>
-                    <p class="app-notification__meta">2 days ago</p>
-                  </div></a></li>
-              <li><a class="app-notification__item" href="javascript:;"><span class="app-notification__icon"><i class="bi bi-envelope fs-4 text-primary"></i></span>
-                  <div>
-                    <p class="app-notification__message">Lisa sent you a mail</p>
-                    <p class="app-notification__meta">2 min ago</p>
-                  </div></a></li>
-              <li><a class="app-notification__item" href="javascript:;"><span class="app-notification__icon"><i class="bi bi-exclamation-triangle fs-4 text-warning"></i></span>
-                  <div>
-                    <p class="app-notification__message">Mail server not working</p>
-                    <p class="app-notification__meta">5 min ago</p>
-                  </div></a></li>
-              <li><a class="app-notification__item" href="javascript:;"><span class="app-notification__icon"><i class="bi bi-cash fs-4 text-success"></i></span>
-                  <div>
-                    <p class="app-notification__message">Transaction complete</p>
-                    <p class="app-notification__meta">2 days ago</p>
-                  </div></a></li>
-            </div>
-            <li class="app-notification__footer"><a href="#">See all notifications.</a></li>
-          </ul>
-        </li>
+        
         <!-- User Menu-->
         <li class="dropdown"><a class="app-nav__item" href="#" data-bs-toggle="dropdown" aria-label="Open Profile Menu"><i class="bi bi-person fs-4"></i></a>
           <ul class="dropdown-menu settings-menu dropdown-menu-right">
@@ -188,12 +39,7 @@ video {
     <!-- Sidebar menu-->
     <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
     <aside class="app-sidebar">
-      <!-- <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="https://randomuser.me/api/portraits/men/1.jpg" alt="User Image">
-        <div>
-          <p class="app-sidebar__user-name">John Doe</p>
-          <p class="app-sidebar__user-designation">Frontend Developer</p>
-        </div>
-      </div> -->
+
       <ul class="app-menu">
         <li><a class="app-menu__item" href="dashboard.html"><i class="app-menu__icon bi bi-speedometer"></i><span class="app-menu__label">Dashboard</span></a></li>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon bi bi-laptop"></i><span class="app-menu__label">UI Elements</span><i class="treeview-indicator bi bi-chevron-right"></i></a>
@@ -234,7 +80,7 @@ video {
       <div class="app-title">
         <div>
           <h1><i class="bi bi-speedometer"></i> AERTC Smart Micro-Grid Dashboard</h1>
-          <!-- <p>Start a beautiful journey here</p> -->
+          
         </div>
         <ul class="app-breadcrumb breadcrumb">
           <li class="breadcrumb-item"><i class="bi bi-house-door fs-6"></i></li>
@@ -257,13 +103,15 @@ video {
           <div class="col-sm-4">
                 <div id="home" style="width: 150px; height: 150px;  float: right;"></div>
           </div>      
-          <div class="col-sm-4"></div>
+          <div class="col-sm-4 ">
+            <!-- Connecting Line -->
+            <div id="flowLine" class="flow-line">
+        </div> </div>
           <div class="col-sm-4">
+
                 <div id="powerGrid" style="width: 150px; height: 150px;"></div>
           </div> 
         </div>    
-        
-        
         <div class="row" >
           <div class="col-sm-2">
             <div class= "battery-container">
@@ -289,7 +137,6 @@ video {
               <img src="images/Inverter.png" alt="inverter"></div>
             <div class="inverter-container">
               <img src="images/Inverter.png" alt="inverter"></div>
-              
           </div>
           <div class="col-sm-4">
             <div class="video-container">
@@ -364,6 +211,18 @@ video {
     <script src="js/animations.js"></script>
     <!-- Page specific javascripts-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.9.6/lottie.min.js"></script>
+    <script>
+      // Automatically trigger animation and background color change when the page loads
+      window.onload = function () {
+        startFlow();
+   
+      };
 
+      function startFlow() {
+        const flowLine = document.getElementById('flowLine');
+        flowLine.classList.add('animated'); // Start animation
+        };
+      
+    </script>
   </body>
 </html>

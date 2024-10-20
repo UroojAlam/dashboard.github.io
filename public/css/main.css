@@ -14881,3 +14881,149 @@ textarea.form-control-lg {
 .user .user-settings label {
   color: #666;
 }
+
+.inverter-container {
+  width: 120px; /* Match this to your animation width */
+  height: 120px; /*Match this to your animation height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px; /* Adjust as per your layout */
+  margin-left: 120px;
+  /*border: 2px solid #ccc; /* Optional border */
+  overflow: hidden; /* To ensure the image doesn't overflow the container */
+  /* background-color: blueviolet; */
+}
+
+.inverter-container img {
+  max-width: 100%;
+  max-height: 100%;
+  /* background-color: aqua; */
+  object-fit: contain; /* Keeps the image's aspect ratio */
+}
+
+.supercap-container {
+  width: 100px; /* Match this to your animation width */
+  height: 100px; /*Match this to your animation height */
+  display: flex;
+ justify-content: left;
+  /* margin-top: 20px; Adjust as per your layout */
+   margin-left: 0px; 
+  /*border: 2px solid #ccc; /* Optional border */
+  overflow: hidden; /* To ensure the image doesn't overflow the container */
+  /* background-color: blueviolet; */
+}
+
+.supercap-container img {
+  max-width: 100%;
+  max-height: 100%;
+  /* background-color: aqua; */
+  object-fit: contain; /* Keeps the image's aspect ratio */
+}
+
+.battery-container{
+  width: 100px; 
+  height: 100px;
+  margin-left: 40px;
+  font-size: 0;
+}
+.supercap-row {
+  display: flex;
+  justify-content: space-around;
+   align-items: left;
+ 
+}
+
+.supercap-container {
+  flex: 1;
+  margin-top: 50px;
+}
+
+.supercap-container img {
+  max-width: 100%;
+  height: auto;
+}
+.controlboard-container {
+  width: 80px; /* Match this to your animation width */
+  height: 80px; /*Match this to your animation height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin-top: 20px; Adjust as per your layout */
+  margin-left: 60px;
+  /*border: 2px solid #ccc; /* Optional border */
+  overflow: hidden; /* To ensure the image doesn't overflow the container */
+  /* background-color: blueviolet; */
+}
+
+.controlboard-container img {
+  max-width: 100%;
+  max-height: 100%;
+  /* background-color: aqua; */
+  object-fit: contain; /* Keeps the image's aspect ratio */
+}
+      .video-container {
+  justify-content: center; 
+  margin-top: 120px;
+  /* background-color: aqua;  */
+      }
+video {
+  max-width: 50%;
+  max-height: 100%;
+  /* border: 2px solid #ccc; Optional: for a border around the video */
+}
+ /* Main layout styling */
+ .flow-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+/* Flow Line (default state) */
+.flow-line {
+  position: relative;
+  height: 5px;
+  background: linear-gradient(90deg, lightgray 50%, transparent 50%);
+  background-size: 10px 10px;
+  /* margin-top: 50px; */
+  width: 150px;
+  margin: 60px auto;
+}
+/* Flow animation (color change and moving gradient) */
+@keyframes flow {
+  0% {
+    background-color: grey;
+  }
+  50% {
+    background-color: yellow; /* Change to yellow in the middle */
+  }
+  100% {
+    background-color: green; /* End in green */
+  }
+}
+
+.flow-line.animated {
+  animation: flow 3s infinite; /* Infinite animation, adjust timing */
+}
+
+/* Optional: for more dynamic effect with a gradient moving along the line */
+.flow-line::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, green, transparent);
+  animation: move-gradient 3s infinite;
+}
+
+@keyframes move-gradient {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
