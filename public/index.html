@@ -33,7 +33,7 @@
         0% { width: 0; }
         100% { width: 100px; }
       }
-      .image-container {
+      .inverter-container {
   width: 120px; /* Match this to your animation width */
   height: 120px; /*Match this to your animation height */
   display: flex;
@@ -46,15 +46,76 @@
   /* background-color: blueviolet; */
 }
 
-.image-container img {
+.inverter-container img {
+  max-width: 100%;
+  max-height: 100%;
+  /* background-color: aqua; */
+  object-fit: contain; /* Keeps the image's aspect ratio */
+}
+
+.supercap-container {
+  width: 100px; /* Match this to your animation width */
+  height: 100px; /*Match this to your animation height */
+  display: flex;
+ justify-content: left;
+  /* margin-top: 20px; Adjust as per your layout */
+   margin-left: 0px; 
+  /*border: 2px solid #ccc; /* Optional border */
+  overflow: hidden; /* To ensure the image doesn't overflow the container */
+  /* background-color: blueviolet; */
+}
+
+.supercap-container img {
+  max-width: 100%;
+  max-height: 100%;
+  /* background-color: aqua; */
+  object-fit: contain; /* Keeps the image's aspect ratio */
+}
+
+.battery-container{
+  width: 100px; 
+  height: 100px;
+  margin-left: 40px;
+  font-size: 0;
+}
+.supercap-row {
+  display: flex;
+  justify-content: space-around;
+   align-items: left;
+ 
+}
+
+.supercap-container {
+  flex: 1;
+  /* text-align: left; */
+}
+
+.supercap-container img {
+  max-width: 100%;
+  height: auto;
+}
+.controlboard-container {
+  width: 80px; /* Match this to your animation width */
+  height: 80px; /*Match this to your animation height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin-top: 20px; Adjust as per your layout */
+  margin-left: 60px;
+  /*border: 2px solid #ccc; /* Optional border */
+  overflow: hidden; /* To ensure the image doesn't overflow the container */
+  /* background-color: blueviolet; */
+}
+
+.controlboard-container img {
   max-width: 100%;
   max-height: 100%;
   /* background-color: aqua; */
   object-fit: contain; /* Keeps the image's aspect ratio */
 }
       .video-container {
-  justify-content: left; 
-  margin-right: 100px;
+  justify-content: center; 
+  margin-top: 120px;
   /* background-color: aqua;  */
       }
 video {
@@ -172,7 +233,7 @@ video {
     <main class="app-content">
       <div class="app-title">
         <div>
-          <h1><i class="bi bi-speedometer"></i> Smart Grid Dashboard</h1>
+          <h1><i class="bi bi-speedometer"></i> AERTC Smart Micro-Grid Dashboard</h1>
           <!-- <p>Start a beautiful journey here</p> -->
         </div>
         <ul class="app-breadcrumb breadcrumb">
@@ -182,13 +243,13 @@ video {
       </div>
       <div class="tile">
       <div class="container-fluid">
-        <div class="row"> 
+        <!-- <div class="row"> 
           <div class="col-sm-4"></div>
           <div class="col-sm-4">
-           <div class="tile-body text-white bg-danger" style="text-align: center; font-size: xx-large;">Smart Grid Dashboard</div>
+           <div class="tile-body text-white bg-danger" style="text-align: center; font-size: x-large;">AERTC Smart Grid Dashboard</div>
           </div>
           <div class="col-sm-4"></div>
-        </div>
+        </div> -->
 
         
            
@@ -202,26 +263,33 @@ video {
           </div> 
         </div>    
         
-        <div class="row">
+        
+        <div class="row" >
           <div class="col-sm-2">
-            <div id="batteries" style="width: 200px; height: 100px;"></div>
+            <div class= "battery-container">
+            <div id="battery-1"></div><div id="battery-2"></div><div id="battery-3"></div><div id="battery-4"></div><div id="battery-5"></div>
+            </div>
           </div>
-          <div class="col-sm-2"></div> 
-          <div class="col-sm-4">
-            <div class="image-container">
-              <img src="images/Inverter.png" alt="inverter"></div>
-          </div>
-          <div class="col-sm-4"></div>
-        </div>  
-
-        <div class="row">
           <div class="col-sm-2">
-            <div id="batteries" style="width: 200px; height: 100px;"></div>
-          </div>
-          <div class="col-sm-2"></div> 
+            <div class="controlboard-container">
+              <img src="images/Control-board.jpg" ></div>
+            <div class="controlboard-container">
+              <img src="images/Control-board.jpg" ></div>
+            <div class="controlboard-container">
+              <img src="images/Control-board.jpg" ></div>
+            <div class="controlboard-container">
+              <img src="images/Control-board.jpg" ></div>
+            <div class="controlboard-container">
+              <img src="images/Control-board.jpg" ></div>
+          </div> 
           <div class="col-sm-4">
-            <div class="image-container">
+            <div class="inverter-container">
               <img src="images/Inverter.png" alt="inverter"></div>
+            <div class="inverter-container">
+              <img src="images/Inverter.png" alt="inverter"></div>
+            <div class="inverter-container">
+              <img src="images/Inverter.png" alt="inverter"></div>
+              
           </div>
           <div class="col-sm-4">
             <div class="video-container">
@@ -230,21 +298,44 @@ video {
                 Your browser does not support the video tag.
               </video>
             </div>
-          </div>      
-        </div>  
-
-        <div class="row">
-          <div class="col-sm-2">
-            <div id="batteries" style="width: 200px; height: 100px;"></div>
+            
+            <div class="supercap-row">
+              <div class="supercap-container">
+                <img src="images/supercaps.png">
+                <img src="images/supercaps.png">
+                <img src="images/supercaps.png">
+              <img src="images/supercaps.png"><img src="images/supercaps.png">
+            </div>
           </div>
-          <div class="col-sm-2"></div> 
-          <div class="col-sm-4">
-            <div class="image-container">
-              <img src="images/Inverter.png" alt="inverter"></div>
-          </div>
-          <div class="col-sm-4"></div>
         </div>
-
+<!-- 
+        <div class="row">
+          <div class="col-sm-1">
+            <div class="supercap-container">
+              <img src="images/supercaps.png " ></div>
+          </div>
+          <div class="col-sm-1">
+            <div class="supercap-container">
+              <div id="supercaps" style=" margin-left: 0px; padding-right: -70px;"></div>
+              <img src="images/supercaps.png" ></div>
+          </div> 
+          <div class="col-sm-1">
+            <div class="supercap-container">
+              <img src="images/supercaps.png" ></div>
+          </div>
+          <div class="col-sm-1">
+            <div class="supercap-container">
+              <img src="images/supercaps.png" ></div>
+          </div>
+          <div class="col-sm-1">
+            <div class="supercap-container">
+              <img src="images/supercaps.png" ></div>
+          </div>
+          <div class="col-sm-1">
+           
+          <div class="col-sm-6"></div>
+        </div> -->
+        
           
         <!-- <div class="arrow"></div> -->
         <!-- <div class="col-md-4"> -->
@@ -272,7 +363,6 @@ video {
     <script src="js/main.js"></script>
     <script src="js/animations.js"></script>
     <!-- Page specific javascripts-->
-   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.9.6/lottie.min.js"></script>
 
   </body>

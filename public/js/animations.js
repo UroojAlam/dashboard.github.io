@@ -17,13 +17,53 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   
     var batteriesAnim = lottie.loadAnimation({
-      container: document.getElementById('batteries'),
+      container: document.getElementById('battery-1'),
       renderer: 'svg',
       loop: true,
       autoplay: true,
       path: 'assets/animations/battery2.json'
     });
   
+    var batteriesAnim = lottie.loadAnimation({
+      container: document.getElementById('battery-2'),
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      path: 'assets/animations/battery2.json'
+    });
+
+    var batteriesAnim = lottie.loadAnimation({
+      container: document.getElementById('battery-3'),
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      path: 'assets/animations/battery2.json'
+    });
+  
+    var batteriesAnim = lottie.loadAnimation({
+      container: document.getElementById('battery-4'),
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      path: 'assets/animations/battery2.json'
+    });
+    
+    var batteriesAnim = lottie.loadAnimation({
+      container: document.getElementById('battery-5'),
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      path: 'assets/animations/battery2.json'
+    });
+  
+    var batteriesAnim = lottie.loadAnimation({
+      container: document.getElementById('battery-6'),
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      path: 'assets/animations/battery2.json'
+    });
+    
     var invertersAnim = lottie.loadAnimation({
       container: document.getElementById('inverters'),
       renderer: 'svg',
