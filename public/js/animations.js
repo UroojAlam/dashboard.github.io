@@ -16,54 +16,63 @@ document.addEventListener("DOMContentLoaded", function() {
       path: 'assets/animations/grid.json'
     });
   
-    var batteriesAnim = lottie.loadAnimation({
-      container: document.getElementById('battery-1'),
-      renderer: 'svg',
-      loop: true,
-      autoplay: true,
-      path: 'assets/animations/battery2.json'
-    });
-  
-    var batteriesAnim = lottie.loadAnimation({
-      container: document.getElementById('battery-2'),
-      renderer: 'svg',
-      loop: true,
-      autoplay: true,
-      path: 'assets/animations/battery2.json'
-    });
+   // Array to hold battery animation instances
+   var batteryAnims = [];
 
-    var batteriesAnim = lottie.loadAnimation({
-      container: document.getElementById('battery-3'),
-      renderer: 'svg',
-      loop: true,
-      autoplay: true,
-      path: 'assets/animations/battery2.json'
-    });
-  
-    var batteriesAnim = lottie.loadAnimation({
-      container: document.getElementById('battery-4'),
-      renderer: 'svg',
-      loop: true,
-      autoplay: true,
-      path: 'assets/animations/battery2.json'
-    });
-    
-    var batteriesAnim = lottie.loadAnimation({
-      container: document.getElementById('battery-5'),
-      renderer: 'svg',
-      loop: true,
-      autoplay: true,
-      path: 'assets/animations/battery2.json'
-    });
-  
-    var batteriesAnim = lottie.loadAnimation({
-      container: document.getElementById('battery-6'),
-      renderer: 'svg',
-      loop: true,
-      autoplay: true,
-      path: 'assets/animations/battery2.json'
-    });
-    
+   // Initialize all battery animations
+   for (let i = 1; i <= 6; i++) {
+     batteryAnims.push(lottie.loadAnimation({
+       container: document.getElementById(`battery-${i}`),
+       renderer: 'svg',
+       loop: true,
+       autoplay: true,
+       path: 'assets/animations/battery.json' // Common battery animation file
+     }));
+   }
+
+   // Function to update battery animation based on percentage
+   function updateBatteryAnimation(batteryIndex, percentage) {
+     const animation = batteryAnims[batteryIndex];
+
+     // Update battery percentage - assuming the Lottie animation has frames representing different charging levels
+     // E.g., from 0% to 100%, spread over 0 to 100 frames
+     const frame = Math.round((percentage / 100) * animation.totalFrames); // Total frames based on battery percentage
+     animation.goToAndStop(frame, true); // Go to the frame corresponding to the battery percentage
+
+     // Update battery color dynamically (you can change the logic based on specific requirements)
+     const batteryElement = document.getElementById(`battery-${batteryIndex + 1}`);
+    //  if (percentage < 25) {
+    //    batteryElement.style.backgroundColor = 'red';
+    //  } else if (percentage < 50) {
+    //    batteryElement.style.backgroundColor = 'orange';
+    //  } else if (percentage < 75) {
+    //    batteryElement.style.backgroundColor = 'yellow';
+    //  } else {
+    //    batteryElement.style.backgroundColor = 'green';
+    //  }
+   }
+
+   // Fetch data from the server and update the animations
+   function fetchDataAndUpdate() {
+     fetch('/get-latest-data')
+       .then(response => response.json())
+       .then(data => {
+         console.log('Fetched data:', data);
+
+         // Assuming you have battery data in the format { variable: "Battery 1", value: 23 }
+         data.forEach(item => {
+           if (item.variable.startsWith('Battery')) {
+             const batteryIndex = parseInt(item.variable.split(' ')[1]) - 1; // Extract battery number
+             updateBatteryAnimation(batteryIndex, item.value); // Update battery animation
+           }
+         });
+       })
+       .catch(error => console.error('Error fetching data:', error));
+   }
+
+   // Fetch and update the battery every 5 seconds
+   setInterval(fetchDataAndUpdate, 5000);
+
     var invertersAnim = lottie.loadAnimation({
       container: document.getElementById('inverters'),
       renderer: 'svg',
