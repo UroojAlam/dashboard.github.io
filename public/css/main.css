@@ -14888,8 +14888,9 @@ textarea.form-control-lg {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px; /* Adjust as per your layout */
-  margin-left: 120px;
+  /* margin-top: 20px; Adjust as per your layout */
+  margin-bottom: 20px;
+  margin-left: 90px;
   /*border: 2px solid #ccc; /* Optional border */
   overflow: hidden; /* To ensure the image doesn't overflow the container */
   /* background-color: blueviolet; */
@@ -14903,14 +14904,13 @@ textarea.form-control-lg {
 }
 
 .supercap-container {
-  width: 100px; /* Match this to your animation width */
-  height: 100px; /*Match this to your animation height */
+  width: 130px; 
+  height: 130px; 
   display: flex;
- justify-content: left;
-  /* margin-top: 20px; Adjust as per your layout */
-   margin-left: 0px; 
+  justify-content: left;
+   margin-left: 40px; 
   /*border: 2px solid #ccc; /* Optional border */
-  overflow: hidden; /* To ensure the image doesn't overflow the container */
+  overflow: hidden; 
   /* background-color: blueviolet; */
 }
 
@@ -14918,7 +14918,7 @@ textarea.form-control-lg {
   max-width: 100%;
   max-height: 100%;
   /* background-color: aqua; */
-  object-fit: contain; /* Keeps the image's aspect ratio */
+  object-fit: contain;
 }
 
 .battery-container{
@@ -14937,20 +14937,11 @@ textarea.form-control-lg {
 }
 .supercap-row {
   display: flex;
-  justify-content: space-around;
-   align-items: left;
+  /* justify-content: space-around; */
+   /* align-items: left; */
  
 }
 
-.supercap-container {
-  flex: 1;
-  margin-top: 50px;
-}
-
-.supercap-container img {
-  max-width: 100%;
-  height: auto;
-}
 .controlboard-container {
   width: 80px; /* Match this to your animation width */
   height: 80px; /*Match this to your animation height */
@@ -14972,7 +14963,7 @@ textarea.form-control-lg {
 }
       .video-container {
   justify-content: center; 
-  margin-top: 120px;
+  margin-top: 140px;
   /* background-color: aqua;  */
       }
 video {
@@ -14995,7 +14986,7 @@ video {
   background: linear-gradient(90deg, lightgray 50%, transparent 50%);
   background-size: 10px 10px;
   /* margin-top: 50px; */
-  width: 150px;
+  width: 50px;
   margin: 60px auto;
 }
 /* Flow animation (color change and moving gradient) */

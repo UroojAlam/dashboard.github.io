@@ -100,20 +100,28 @@
         
            
         <div class="row">
-          <div class="col-sm-4">
-                <div id="home" style="width: 150px; height: 150px;  float: right;"></div>
-          </div>      
+          <div class="col-sm-1">
+            <div class="supercap-container">
+              <img src="images/supercaps.png">
+          </div>
+          </div>
+          <div class="col-sm-1">
+            <div id="flowLine" class="flow-line" style="margin-top: 70px; margin-left: 60px;" ></div>
+          </div>
+          <div class="col-sm-1">
+            <div class="controlboard-container" style="margin-top: 40px;">
+            <img src="images/Control-board.jpg" ></div>
+          </div>
+          <div class="col-sm-1">
+          </div>          
           <div class="col-sm-4 ">
-            <!-- Connecting Line -->
-            <div id="flowLine" class="flow-line">
-        </div> </div>
+          <div id="home" style="width: 150px; height: 150px;  float: left; margin-left: 60px; margin-bottom: 30px;"></div>
+        </div>
           <div class="col-sm-4">
-
-                <div id="powerGrid" style="width: 150px; height: 150px;"></div>
           </div> 
         </div>    
         <div class="row" >
-          <div class="col-sm-2">
+          <div class="col-sm-1">
             <div class="battery-container">
               <div id="battery-1" style="transform: rotate(90deg);">
                 <span class="battery-value" id="battery-value-1"></span>
@@ -132,7 +140,14 @@
               </div>
             </div>
           </div>
-          <div class="col-sm-2">
+          <div class="col-sm-1">
+            <div id="flowLine" class="flow-line" style="margin-top: 35px; margin-left: 60px;" ></div>
+            <div id="flowLine" class="flow-line" style="margin-top: 75px; margin-left: 60px;" ></div>
+            <div id="flowLine" class="flow-line" style="margin-top: 75px; margin-left: 60px;" ></div>
+            <div id="flowLine" class="flow-line" style="margin-top: 75px; margin-left: 60px;" ></div>
+            <div id="flowLine" class="flow-line" style="margin-top: 75px; margin-left: 60px;" ></div>
+          </div>
+          <div class="col-sm-1">
             <div class="controlboard-container">
               <img src="images/Control-board.jpg" ></div>
             <div class="controlboard-container">
@@ -143,32 +158,38 @@
               <img src="images/Control-board.jpg" ></div>
             <div class="controlboard-container">
               <img src="images/Control-board.jpg" ></div>
-          </div> 
-          <div class="col-sm-4">
+          </div>
+          <div class="col-sm-1">
+            <div id="flowLine" class="flow-line" style="margin-top: 200px; margin-left: 100px;" ></div>
+          </div>
+          <div class="col-sm-3">
             <div class="inverter-container">
-              <img src="images/Inverter.png" alt="inverter"></div>
+              <img src="images/Inverter.png"></div>
             <div class="inverter-container">
-              <img src="images/Inverter.png" alt="inverter"></div>
+              <img src="images/Inverter.png"></div>
             <div class="inverter-container">
-              <img src="images/Inverter.png" alt="inverter"></div>
+              <img src="images/Inverter.png"></div>
+          </div>
+          <div class="col-sm-1">
+            <div id="flowLine" class="flow-line" style="margin-top: 200px;" ></div>
           </div>
           <div class="col-sm-4">
+            <div id="powerGrid" style="width: 150px; height: 150px;margin-top: -30px;"></div>
             <div class="video-container">
               <video width="200" height="140" autoplay loop muted>
                 <source src="images/1014.mp4" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
             </div>
-            
-            <div class="supercap-row">
-              <div class="supercap-container">
-                <img src="images/supercaps.png">
-                <img src="images/supercaps.png">
-                <img src="images/supercaps.png">
-              <img src="images/supercaps.png"><img src="images/supercaps.png">
-            </div>
           </div>
         </div>
+            
+            <!-- <div class="supercap-row">
+              <div class="supercap-container">
+                <img src="images/supercaps.png">
+            </div>
+          </div>
+        </div> -->
 <!-- 
         <div class="row">
           <div class="col-sm-1">
@@ -236,6 +257,7 @@
         const flowLine = document.getElementById('flowLine');
         flowLine.classList.add('animated'); // Start animation
         };
+
       
     </script>
   </body>
