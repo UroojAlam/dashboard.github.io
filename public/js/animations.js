@@ -73,13 +73,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
    // Fetch and update the battery every 3 seconds
    setInterval(fetchDataAndUpdate, 3000);
-
+   //fetchDataAndUpdate();
     var invertersAnim = lottie.loadAnimation({
       container: document.getElementById('inverters'),
       renderer: 'svg',
       loop: true,
       autoplay: true,
       path: 'assets/animations/capacitor.json'
+ 
     });
 
     var motorAnim = lottie.loadAnimation({
