@@ -20,6 +20,7 @@
     <header class="app-header"><a class="app-header__logo" href="index.html">AERTC Admin</a>
       <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
       <!-- Navbar Right Menu-->
+      <h3 style="color: white; margin-top: 10px; margin-left: 300px;" id="demo"></h3>
       <ul class="app-nav">
         <li class="app-search">
           <input class="app-search__input" type="search" placeholder="Search">
@@ -273,6 +274,22 @@
     <!-- Page specific javascripts-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.9.6/lottie.min.js"></script>
     <script>
+    var i = 0;
+    var j = 27;
+    var txt = '"Website is under development"';
+    var speed = 50;
+    
+    function typeWriter() {
+      if (i < txt.length) {
+        document.getElementById("demo").innerHTML += txt.charAt(i);
+        i++;
+        setTimeout(typeWriter, speed);
+      }
+    }   
+    // Fetch and update the battery every 3 seconds
+   setInterval(typeWriter, 1000);
+    </script>
+    <script>
       // Automatically trigger animation and background color change when the page loads
       window.onload = function () {
         startFlow();
@@ -313,7 +330,6 @@ function fetchDataAndUpdate() {
   // Repeat with another simulated data point after 3 seconds
 //  setTimeout(() => updateLEDStatus(0), 3000);
 }
-
     </script>
   </body>
 </html>
