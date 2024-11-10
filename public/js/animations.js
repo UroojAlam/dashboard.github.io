@@ -61,12 +61,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
          // Assuming you have battery data in the format { variable: "Battery 1", value: 23 }
          data.forEach(item => {
-           if (item.variable.startsWith('Battery')) {
-             const batteryIndex = parseInt(item.variable.split(' ')[1]) - 1; // Extract battery number
-             
-             updateBatteryAnimation(batteryIndex, item.value); // Update battery animation
-           }
-         });
+          //  if (item.variable.startsWith('Battery')) {
+          //    const batteryIndex = parseInt(item.variable.split(' ')[1]); // Extract battery number
+          //    console.log('Battery index:', batteryIndex);
+          //    updateBatteryAnimation(batteryIndex, item.value); // Update battery animation
+          //  }
+while(item.BatteryIndex<=6){
+           console.log('Battery index:', item.BatteryIndex);
+           updateBatteryAnimation(item.BatteryIndex, item.value); // Update battery animation
+           break;
+         }});
        })
        .catch(error => console.error('Error fetching data:', error));
    }

@@ -14,9 +14,9 @@ const connection = mysql.createConnection({
 
 // Create a table if it doesn't exist
 connection.query(
-    `CREATE TABLE IF NOT EXISTS sensor_data (
+    `CREATE TABLE IF NOT EXISTS battery_data (
         id INT AUTO_INCREMENT PRIMARY KEY,
-        variable VARCHAR(255),
+        BatteryIndex INT(255),
         value DECIMAL(10, 2),
         timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )`, (err, results) => {
@@ -39,7 +39,7 @@ app.post('/receive-data', (req, res) => {
     // Use a Promise to handle database insertion
     const insertPromises = Object.entries(labviewData).map(([key, value]) => {
         return new Promise((resolve, reject) => {
-            const query = `INSERT INTO sensor_data (variable, value) VALUES (?, ?)`;
+            const query = `INSERT INTO battery_data (BatteryIndex, value) VALUES (?, ?)`;
             connection.query(query, [key, value], (err, result) => {
                 if (err) return reject(err); // Reject the promise on error
                 console.log('Data inserted:', result);
@@ -61,14 +61,14 @@ app.post('/receive-data', (req, res) => {
 
 // Endpoint to get the latest data
 app.get('/get-latest-data', (req, res) => {
-    const query = `SELECT variable, value, timestamp FROM sensor_data ORDER BY timestamp DESC LIMIT 10`;
+    const query = `SELECT BatteryIndex, value, timestamp FROM battery_data ORDER BY id DESC LIMIT 5`;
     connection.query(query, (err, results) => {
         if (err) {
             res.status(500).json({ message: 'Error fetching data' });
         } else {
             
             results = results.map(row => ({
-                variable: row.variable,
+                BatteryIndex: row.BatteryIndex,
                 value: row.value,
                 timestamp: row.timestamp.toISOString() // Convert to a string
             }));
@@ -82,7 +82,7 @@ app.get('/get-latest-data', (req, res) => {
 // Endpoint to get the latest data for a specific sensor
 app.get('/get-history/:sensor', (req, res) => {
     const sensor = req.params.sensor;
-    const query = `SELECT variable, value, timestamp FROM sensor_data WHERE variable = ? ORDER BY timestamp DESC`;
+    const query = `SELECT BatteryIndex, value, timestamp FROM battery_data WHERE BatteryIndex = ? ORDER BY timestamp DESC`;
 
     connection.query(query, [sensor], (err, results) => {
         if (err) {
@@ -97,7 +97,7 @@ app.get('/get-history/:sensor', (req, res) => {
 
 // Endpoint to get all historical data
 app.get('/get-all-history', (req, res) => {
-    const query = `SELECT variable, value, timestamp FROM sensor_data ORDER BY timestamp DESC`;
+    const query = `SELECT BatteryIndex, value, timestamp FROM battery_data ORDER BY timestamp DESC`;
 
     connection.query(query, (err, results) => {
         if (err) {
