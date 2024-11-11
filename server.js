@@ -3,7 +3,9 @@ const bodyParser = require('body-parser');
 const app = express();
 const port = 3000;
 const mysql = require('mysql2');
-
+app.use(bodyParser.urlencoded({
+    extended: true
+    }));
 // Create a MySQL connection
 const connection = mysql.createConnection({
     host: 'localhost',
@@ -42,7 +44,7 @@ app.post('/receive-data', (req, res) => {
             const query = `INSERT INTO battery_data (BatteryIndex, value) VALUES (?, ?)`;
             connection.query(query, [key, value], (err, result) => {
                 if (err) return reject(err); // Reject the promise on error
-                console.log('Data inserted:', result);
+                // console.log('Data inserted:', result);
                 resolve(result);
             });
         });
@@ -109,6 +111,34 @@ app.get('/get-all-history', (req, res) => {
     });
 });
 
+const value = new Array(2);
+
+// GET endpoint to retrieve data based on two keys to be used by checkbox buttons
+app.post('/control/', (req, res) => {
+    console.log(req.body); 
+    const btid = req.body.btid;
+    const cn = req.body.cn;
+    var receiveddata = req.body; 
+    
+    // if(!btid && !cn){
+    value[0]=btid;
+    value[1]=cn;
+    console.log(value);
+
+    // console.log(receiveddata.btid);
+    // console.log(receiveddata.cn);
+    // Send a response
+    res.json({ message: 'keys received ', data: value });
+});
+
+// Endpoint to get the latest data
+app.post('/get-btcontrol', (req, res) => {
+    console.log("in get",value);
+    if(value[0]>= 0)
+    {
+    res.json(value); // Return the latest record
+    }     
+});
 
 app.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`);
