@@ -139,8 +139,8 @@
           <div id="home" style="width: 180px; height: 180px;  float: left; margin-left: 60px; margin-top: -60px;"></div>
           <div id="flowLine" class="flow-line" style="margin-top: 180px; margin-left: 120px; rotate: 90deg;" ></div>
         </div>
-        <div class="col-sm-3" >
-          <div class="tile" >
+        <div class="col-sm-4" style="margin-left: -60px;" >
+          <div class="tile">
             <h3 class="tile-title" style="margin-left: 25px;">Current status</h3>
             <table class="table table-hover" >
               <thead>
@@ -156,9 +156,9 @@
                   <td>1</td>
                   <td>Inverters</td>
                   <td>
-                  <div class="status-led" id="status-led-4" style="margin-left: 0px; margin-top: 5px;"></div>
-                  <div class="status-led" id="status-led-5" style="margin-left: 20px; margin-top: 5px;"></div>
-                  <div class="status-led" id="status-led-6" style="margin-left: 40px; margin-top: 5px;"></div>
+                  <div class="status-led" id="status-led-4" style="margin-left: -20px; margin-top: 5px;"></div>
+                  <div class="status-led" id="status-led-5" style="margin-left: 0px; margin-top: 5px;"></div>
+                  <div class="status-led" id="status-led-6" style="margin-left: 20px; margin-top: 5px;"></div>
                   </td>
                   <td>--</td>
                 </tr>
@@ -166,7 +166,7 @@
                   <td>2</td>
                   <td>Grid</td>
                   <td>
-                  <div class="status-led" id="status-led-7" style="margin-left: 0px; margin-top: 5px;"></div>  
+                  <div class="status-led" id="status-led-8" style="margin-left: -20px; margin-top: 5px;"></div>  
                   </td>
                   <td>--</td>
                 </tr>
@@ -174,11 +174,11 @@
                   <td>3</td>
                   <td>Batteries</td>
                   <td>
-                  <div class="status-led" id="status-led-8" style="margin-left: 0px; margin-top: 5px;"></div>
-                  <div class="status-led" id="status-led-9" style="margin-left: 20px; margin-top: 5px;"></div>
-                  <div class="status-led" id="status-led-10" style="margin-left: 40px; margin-top: 5px;"></div>
-                  <div class="status-led" id="status-led-11" style="margin-left: 60px; margin-top: 5px;"></div>
-                  <div class="status-led" id="status-led-12" style="margin-left: 80px; margin-top: 5px;"></div>  
+                  <div class="status-led" id="status-led-7" style="margin-left: -20px; margin-top: 5px;"></div>
+                  <div class="status-led" id="status-led-9" style="margin-left: 0px; margin-top: 5px;"></div>
+                  <div class="status-led" id="status-led-10" style="margin-left: 20px; margin-top: 5px;"></div>
+                  <div class="status-led" id="status-led-11" style="margin-left: 40px; margin-top: 5px;"></div>
+                  <div class="status-led" id="status-led-12" style="margin-left: 60px; margin-top: 5px;"></div>  
                   </td>
                   <td>--</td>
                 </tr>
@@ -307,26 +307,14 @@
         const flowLine = document.getElementById('flowLine');
         flowLine.classList.add('animated'); // Start animation
         };
-
-        // Function to update LED status based on data
-function updateLEDStatus(data) {
-
-for (let i = 1; i <= 20; i++) {
-  const ledElement = [];
-  ledElement[i] = document.getElementById(`status-led-${i}`);
-
-  if (data === 1) {
-    ledElement[i].style.backgroundColor = '#4CBB17'; // Turn LED green if data is 1
-  } else {
-    ledElement[i].style.backgroundColor = '--bs-gray';  // Turn LED off (grey) if data is 0
-  }
-}
-}
-
+</script>
+<script>
+// const powerStatus = 0; // 1 for on, 0 for off
 function sendPowerStatus() {
     const powerSwitch = document.getElementById('power-switch');
     const powerStatus = powerSwitch.checked ? 1 : 0;
     console.log('Power button status:',powerStatus);
+      updateLEDStatus(powerStatus);
 
     fetch('/update-radio', {
   method: 'POST',
@@ -343,20 +331,25 @@ function sendPowerStatus() {
       console.error('Error:', error);
     });
   }
-// Example usage
-// Call this function with the data you want to check
-fetchDataAndUpdate(); // Or any data-fetching function
-// Example function simulating fetch and LED update
-function fetchDataAndUpdate() {
-  // Simulate fetching data
-  let simulatedData = 0; // 1 for on, 0 for off
-  
-  // Update the LED based on the simulated data
-  updateLEDStatus(simulatedData);
+</script>
+<script>
+   // Function to update LED status based on data
+function updateLEDStatus(data) {
+console.log('Updating LED status with data:', data);
+let dataInt = Number(data);
+console.log('Updating LED status with data int:', dataInt);
+for (let i = 1; i <=7; i++) {
+  const ledElement = [];
+  ledElement[i] = document.getElementById(`status-led-${i}`);
 
-  // Repeat with another simulated data point after 3 seconds
-//  setTimeout(() => updateLEDStatus(0), 3000);
+  if (dataInt === 1) {
+    ledElement[i].style.backgroundColor = '#4CBB17'; // Turn LED green if data is 1
+  }  
+  else {
+    ledElement[i].style.backgroundColor = '#808080';  // Turn LED off (grey) if data is 0
+  }
 }
-    </script>
+}
+</script>
   </body>
 </html>
