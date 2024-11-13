@@ -96,20 +96,20 @@
       <div class="container-fluid">
            
         <div class="row">
-          <div class="powerbody">
-            <div class="power-switch">
-              <input type="checkbox" />
-              <div class="button">
-                <svg class="power-off">
-                  <use xlink:href="#pline" class="pline" />
-                  <use xlink:href="#circle" class="circle" />
-                </svg>
-                <svg class="power-on">
-                  <use xlink:href="#pline" class="pline" />
-                  <use xlink:href="#circle" class="circle" />
-                </svg>
+            <div class="powerbody">
+              <div class="power-switch">
+                <input type="checkbox" id="power-switch" onchange="sendPowerStatus()" />
+                <div class="button">
+                  <svg class="power-off">
+                    <use xlink:href="#pline" class="pline" />
+                    <use xlink:href="#circle" class="circle" />
+                  </svg>
+                  <svg class="power-on">
+                    <use xlink:href="#pline" class="pline" />
+                    <use xlink:href="#circle" class="circle" />
+                  </svg>
+                </div>
               </div>
-            </div>
             
             <!-- SVG -->
             <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -127,10 +127,10 @@
           </div>
           </div>
           <div class="col-sm-1">
-            <div id="flowLine" class="flow-line" style="margin-top: 200px;" ></div>
+            <div id="flowLine" class="flow-line" style="margin-top: 200px; margin-left: 5px;" ></div>
           </div>
           <div class="col-sm-1">
-            <div class="controlboard-container" style="margin-top: 175px; ">
+            <div class="controlboard-container" style="margin-top: 175px; margin-left: 35px; ">
             <img src="images/Control-board.jpg" ></div>
           </div>
           <div class="col-sm-1">
@@ -139,9 +139,9 @@
           <div id="home" style="width: 180px; height: 180px;  float: left; margin-left: 60px; margin-top: -60px;"></div>
           <div id="flowLine" class="flow-line" style="margin-top: 180px; margin-left: 120px; rotate: 90deg;" ></div>
         </div>
-        <div class="col-sm-2" >
+        <div class="col-sm-3" >
           <div class="tile" >
-            <h3 class="tile-title">Current status</h3>
+            <h3 class="tile-title" style="margin-left: 25px;">Current status</h3>
             <table class="table table-hover" >
               <thead>
                 <tr>
@@ -156,9 +156,9 @@
                   <td>1</td>
                   <td>Inverters</td>
                   <td>
-                  <div class="status-led" id="status-led-4" style="margin-left:-20px; margin-top: 5px;"></div>
-                  <div class="status-led" id="status-led-5" style="margin-left: 0px; margin-top: 5px;"></div>
-                  <div class="status-led" id="status-led-6" style="margin-left: 20px; margin-top: 5px;"></div>
+                  <div class="status-led" id="status-led-4" style="margin-left: 0px; margin-top: 5px;"></div>
+                  <div class="status-led" id="status-led-5" style="margin-left: 20px; margin-top: 5px;"></div>
+                  <div class="status-led" id="status-led-6" style="margin-left: 40px; margin-top: 5px;"></div>
                   </td>
                   <td>--</td>
                 </tr>
@@ -166,7 +166,7 @@
                   <td>2</td>
                   <td>Grid</td>
                   <td>
-                  <div class="status-led" id="status-led-7" style="margin-left: -20px; margin-top: 5px;"></div>  
+                  <div class="status-led" id="status-led-7" style="margin-left: 0px; margin-top: 5px;"></div>  
                   </td>
                   <td>--</td>
                 </tr>
@@ -174,11 +174,11 @@
                   <td>3</td>
                   <td>Batteries</td>
                   <td>
-                  <div class="status-led" id="status-led-8" style="margin-left:-20px; margin-top: 5px;"></div>
-                  <div class="status-led" id="status-led-9" style="margin-left: 0px; margin-top: 5px;"></div>
-                  <div class="status-led" id="status-led-10" style="margin-left: 20px; margin-top: 5px;"></div>
-                  <div class="status-led" id="status-led-11" style="margin-left: 40px; margin-top: 5px;"></div>
-                  <div class="status-led" id="status-led-12" style="margin-left: 60px; margin-top: 5px;"></div>  
+                  <div class="status-led" id="status-led-8" style="margin-left: 0px; margin-top: 5px;"></div>
+                  <div class="status-led" id="status-led-9" style="margin-left: 20px; margin-top: 5px;"></div>
+                  <div class="status-led" id="status-led-10" style="margin-left: 40px; margin-top: 5px;"></div>
+                  <div class="status-led" id="status-led-11" style="margin-left: 60px; margin-top: 5px;"></div>
+                  <div class="status-led" id="status-led-12" style="margin-left: 80px; margin-top: 5px;"></div>  
                   </td>
                   <td>--</td>
                 </tr>
@@ -322,11 +322,19 @@ for (let i = 1; i <= 20; i++) {
   }
 }
 }
-function sendRadioButtonState() {
-    const radioButton = document.getElementById('demo-radio-2');
-    const value = radioButton.checked ? 1 : 0;
 
-    fetch('/update-radio')
+function sendPowerStatus() {
+    const powerSwitch = document.getElementById('power-switch');
+    const powerStatus = powerSwitch.checked ? 1 : 0;
+    console.log('Power button status:',powerStatus);
+
+    fetch('/update-radio', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'text/plain',
+  },
+  body: powerStatus.toString() // Send as a plain text string
+})
     .then(response => response.json())
     .then(data => {
       console.log('Response from server:', data);
