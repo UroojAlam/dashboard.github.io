@@ -8,10 +8,10 @@ app.use(bodyParser.urlencoded({
     }));
 // Create a MySQL connection
 const connection = mysql.createConnection({
-    host: 'smartgrid-server',
-    user: 'mqvjbukjvl',
-    password: '$87quhc3uRXK4rVk',
-    database: 'smartgrid-database'
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'labviewData'
 });
 
 // Create a table if it doesn't exist
