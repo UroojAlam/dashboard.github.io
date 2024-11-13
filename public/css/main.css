@@ -448,6 +448,8 @@ th {
   border-color: inherit;
   border-style: solid;
   border-width: 0;
+  
+  overflow: hidden;
 }
 
 label {
@@ -14764,7 +14766,7 @@ textarea.form-control-lg {
 
 .mailbox-messages table tr td {
   border: 0;
-  padding: 5px;
+  padding: 15px;
 }
 .mailbox-messages .mail-subject {
   overflow: hidden;
@@ -14895,7 +14897,7 @@ textarea.form-control-lg {
   align-items: center;
   /* margin-top: 30px;   Adjust as per your layout */
   /* margin-bottom: 20px; */
-  margin-left: 90px;
+  margin-left: 150px;
   /*border: 2px solid #ccc; /* Optional border */
   overflow: visible; /* To ensure the image doesn't overflow the container */
   /* background-color: blueviolet; */
@@ -14911,11 +14913,11 @@ textarea.form-control-lg {
 }
 
 .supercap-container {
-  width: 130px; 
+  width: 100px; 
   height: 130px; 
   display: flex;
-  justify-content: left;
-   margin-left: 40px; 
+  /* justify-content: left; */
+   /* margin-left: 20px;  */
    margin-top: 120px;
   /*border: 2px solid #ccc; /* Optional border */
   overflow: hidden; 
@@ -14951,7 +14953,7 @@ textarea.form-control-lg {
   justify-content: center;
   align-items: center;
   /* margin-top: 15px; Adjust as per your layout */
-  margin-left: 60px;
+  margin-left: 90px;
   /*border: 2px solid #ccc; /* Optional border */
   overflow: hidden; /* To ensure the image doesn't overflow the container */
   /* background-color: blueviolet; */
@@ -15055,141 +15057,246 @@ p span {
   display: block;
 }
 
-/* @import url(https://fonts.googleapis.com/css?family=Roboto+Condensed);
-body {
-  background-color: #111;
-  color: #eee;
-  font-family: "Roboto Condensed";
-} */
 
-form {
-  font-size: 25px;
-  /* max-width: 200px; */
-  /* height: 200px; */
-  width: 100px;
-  margin-left: 285px;
-  border: 1px solid #333;
-  padding: 1em;
-  margin-top: -120px;
-  /* margin-bottom: 50px; */
+.toglecontainer {
+  margin-left: 50px;
+  position:absolute;
+  left:85%;
+  top:50%;
+  transform:translate(-50%, -50%);
   border-radius: 10px;
-  background-color: #000;
-  
+  /* background-color: aqua; */
+  object-fit: contain; /* Keeps the image's aspect ratio */
+  background:#151515;
 }
-@media (min-width: 200px) {
-  form {
-    font-size: 14px;
-    background-color: #111;
-    color: #eee;
-    font-family: "Roboto Condensed";
+
+
+input[type="checkbox"] {
+  margin: 15px;
+  position:relative;
+  width:120px;
+  height:40px;
+  -webkit-appearance: none;
+  background: linear-gradient(0deg, #333, #000);
+  outline: none;
+  border-radius: 20px;
+  box-shadow: 0 0 0 4px #353535, 0 0 0 5px #3e3e3e, inset 0 0 10px rgba(0,0,0,1);
+}
+
+input:checked[type="checkbox"]:nth-of-type(1) {
+  background: linear-gradient(0deg, #e67e22, #f39c12);
+  box-shadow: 0 0 0 4px #353535, 0 0 0 5px #3e3e3e, inset 0 0 10px rgba(0,0,0,1);
+}
+
+input:checked[type="checkbox"]:nth-of-type(2) {
+  background: linear-gradient(0deg, #70a1ff, #1e90ff);
+  box-shadow: 0 0 0 4px #353535, 0 0 0 5px #3e3e3e, inset 0 0 10px rgba(0,0,0,1);
+}
+
+input:checked[type="checkbox"]:nth-of-type(3) {
+  background: linear-gradient(0deg, #e67e22, #f39c12);
+  box-shadow: 0 0 0 4px #353535, 0 0 0 5px #3e3e3e, inset 0 0 10px rgba(0,0,0,1);
+}
+
+input:checked[type="checkbox"]:nth-of-type(4) {
+  background: linear-gradient(0deg, #70a1ff, #1e90ff);
+  box-shadow: 0 0 0 4px #353535, 0 0 0 5px #3e3e3e, inset 0 0 10px rgba(0,0,0,1);
+}
+input[type="checkbox"]:before {
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  width:80px;
+  height:40px;
+  background: linear-gradient(0deg, #000, #6b6b6b);
+  border-radius: 20px;
+  box-shadow: 0 0 0 1px #232323;
+  transform: scale(.98,.96);
+  transition:.5s;
+}
+
+input:checked[type="checkbox"]:before {
+  left:40px;
+}
+
+input[type="checkbox"]:after{
+  content:'';
+  position:absolute;
+  top:calc(50% - 2px);
+  left:70px;
+  width:4px;
+  height:4px;
+  background: linear-gradient(0deg, #6b6b6b, #000);
+  border-radius: 50%;
+  transition:.5s;
+}
+
+input:checked[type="checkbox"]:after {
+  left:110px;
+}
+
+h7 {
+  
+  font-family: sans-serif;
+  text-align:right;
+  color:#fff;
+  font-size:15px;
+  margin-left: 40px;
+  padding:15px 0;
+  /* text-transform: uppercase; */
+  letter-spacing:3px;
+}
+.power-switch {
+  --color-invert: #ffffff;
+  --width: 100px;    
+  --height: 100px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  /* background-color: #00362f; */
+  align-items: center;
+  width: var(--width);
+  height: var(--height);
+  .button {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    &:after {
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background: radial-gradient(circle closest-side, var(--color-invert), transparent);
+      filter: blur(20px);
+      opacity: 0;
+      transition: opacity 1s ease, transform 1s ease;
+      transform: perspective(1px) translateZ(0);
+      backface-visibility: hidden;
+    }
+    .power-on,
+    .power-off {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      z-index: 2;
+      fill: none;
+      stroke: var(--color-invert);
+      stroke-width: 8px;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      .pline {
+        opacity: .2;
+      }
+      .circle {
+        opacity: .2;
+        transform: rotate(-58deg);
+        transform-origin: center 80px;
+        stroke-dasharray: 220;
+        stroke-dashoffset: 40;
+      }
+    }
+    .power-on {
+      filter: drop-shadow(0px 0px 6px rgba(255,255,255,.8));
+      .pline {
+        opacity: 0;
+        transition: opacity .3s ease 1s;
+      }
+      .circle {
+        opacity: 1;
+        stroke-dashoffset: 220;
+        transition: transform 0s ease, stroke-dashoffset 1s ease 0s;
+      }
+    }
+  }
+  input {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 3;
+    cursor: pointer;
+    opacity: 0;
+    &:checked {
+      + .button {
+        &:after {
+          opacity: 0.15;
+          transform: scale(2) perspective(1px) translateZ(0);
+          backface-visibility: hidden;
+          transition: opacity .5s ease, transform .5s ease;
+        }
+        .power-on,
+        .power-off {
+          animation: click-animation .3s ease forwards;
+          transform: scale(1);
+          .pline {
+            animation: pline-animation .8s ease-in forwards;
+          }
+          .circle {
+            transform: rotate(302deg);
+          }
+        }
+        .power-on {
+          .pline {
+            opacity: 1;
+            transition: opacity .05s ease-in .55s;
+          }
+          .circle {
+            transform: rotate(302deg);
+            stroke-dashoffset: 40;
+            transition: transform .4s ease .2s, stroke-dashoffset .4s ease .2s;
+          }
+        }
+      }
+    }
   }
 }
 
-.fancy-radio .clear,
-.fancy-checkbox .clear {
-  clear: both;
-  margin-bottom: 0.5em;
-}
-.fancy-radio .fcb-visual,
-.fancy-checkbox .fcb-visual {
-  position: relative;
-  line-height: 1em;
-  cursor: pointer;
-}
-.fancy-radio .fcb-visual i,
-.fancy-radio .fcb-visual i:before,
-.fancy-checkbox .fcb-visual i,
-.fancy-checkbox .fcb-visual i:before {
-  border-radius: 0.25em;
-  display: inline-block;
-  height: 1em;
-}
-.fancy-radio .fcb-visual i,
-.fancy-checkbox .fcb-visual i {
-  display: inline-block;
-  background-color: #444;
-  height: 1em;
-  width: 2em;
-  box-shadow: 0 0 0 transparent;
-  -webkit-transition-property: background-color, box-shadow;
-  -moz-transition-property: background-color, box-shadow;
-  transition-property: background-color, box-shadow;
-  -webkit-transition-duration: 300ms;
-  -moz-transition-duration: 300ms;
-  transition-duration: 300ms;
-}
-.fancy-radio .fcb-visual i:before,
-.fancy-checkbox .fcb-visual i:before {
-  position: relative;
-  content: "";
-  width: 1em;
-  left: 0.125em;
-  width: 0.75em;
-  height: 0.75em;
-  margin: 0 auto;
-  margin-top: 0.125em;
-  background-color: #eee;
-  -webkit-transition-property: left;
-  -moz-transition-property: left;
-  transition-property: left;
-  -webkit-transition-duration: 300ms;
-  -moz-transition-duration: 300ms;
-  transition-duration: 300ms;
-}
-.fancy-radio .fcb-visual .fcb-label,
-.fancy-checkbox .fcb-visual .fcb-label {
-  display: inline-block;
-  margin-right: 0.25em;
-  opacity: 0.2;
-  -webkit-transition-property: opacity;
-  -moz-transition-property: opacity;
-  transition-property: opacity;
-  -webkit-transition-duration: 300ms;
-  -moz-transition-duration: 300ms;
-  transition-duration: 300ms;
-}
-.fancy-radio .fcb-visual .fcb-label + i,
-.fancy-checkbox .fcb-visual .fcb-label + i {
-  float: right;
-}
-.fancy-radio .fcb-visual i + .fcb-label,
-.fancy-checkbox .fcb-visual i + .fcb-label {
-  float: right;
-  margin-right: 0;
-  margin-left: 0.25em;
-}
-.fancy-radio .fcb-control,
-.fancy-checkbox .fcb-control {
-  display: none;
-}
-.fancy-radio .fcb-control:checked + .fcb-visual i,
-.fancy-checkbox .fcb-control:checked + .fcb-visual i {
-  background-color: #FF9002;
-  box-shadow: 0 0 0.5em #FF9002;
-}
-.fancy-radio .fcb-control:checked + .fcb-visual i:before,
-.fancy-checkbox .fcb-control:checked + .fcb-visual i:before {
-  left: 1.125em;
-  background-color: #FFF502;
-}
-.fancy-radio .fcb-control:checked + .fcb-visual .fcb-label,
-.fancy-checkbox .fcb-control:checked + .fcb-visual .fcb-label {
-  opacity: 1;
-}
-.fancy-radio:last-child .clear,
-.fancy-checkbox:last-child .clear {
-  margin-bottom: 0;
+@keyframes pline-animation {
+  0% {
+    transform: translateY(0);
+  }
+  10% {
+    transform: translateY(10px);
+  }
+  40% {
+    transform: translateY(-25px);
+  }
+  60% {
+    transform: translateY(-25px);
+  }
+  85% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }
 
-.fancy-radio .fcb-visual i {
-  width: 1em;
+@keyframes click-animation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(.9);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
-.fancy-radio .fcb-visual i:before {
-  display: block;
-}
-.fancy-radio .fcb-control + .fcb-visual i:before {
-  left: 0;
-}
-.fancy-radio .fcb-control:checked + .fcb-visual i:before {
-  left: 0;
+
+.powerbody {
+  background: #1B1A23;
+  height: 50px;
+  width: 55px;
+  border-radius: 20%;
+  object-fit: contain;
+  /* font: 400 16px 'Poppins', sans-serif; */
+  /* display: flex; */
+  /* flex-direction: column; */
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
 }

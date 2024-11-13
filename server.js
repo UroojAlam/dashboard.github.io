@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
+app.use(express.json());
 const port = 3000;
 const mysql = require('mysql2');
 app.use(bodyParser.urlencoded({
@@ -112,33 +113,37 @@ app.get('/get-all-history', (req, res) => {
 });
 
 const value = new Array(2);
-
+let buttonstate
 // GET endpoint to retrieve data based on two keys to be used by checkbox buttons
 app.post('/control/', (req, res) => {
     console.log(req.body); 
     const btid = req.body.btid;
     const cn = req.body.cn;
     var receiveddata = req.body; 
-    
-    // if(!btid && !cn){
     value[0]=btid;
     value[1]=cn;
     console.log(value);
-
-    // console.log(receiveddata.btid);
-    // console.log(receiveddata.cn);
     // Send a response
     res.json({ message: 'keys received ', data: value });
 });
 
 // Endpoint to get the latest data
 app.post('/get-btcontrol', (req, res) => {
+    value[1]=buttonstate;
     console.log("in get",value);
-    if(value[0]>= 0)
+    if(value[0]>= 0 || value[1]>= 0 )
     {
     res.json(value); // Return the latest record
-    }     
+    } 
+    buttonstate = 0;
 });
+
+app.post('/update-radio', (req, res) => {
+    const radioState = req.body.radioState;
+    buttonstate = radioState;
+    console.log('Received radio state:',buttonstate);
+    res.json({ message: 'Radio state received', buttonstate });
+  });
 
 app.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`);

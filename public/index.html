@@ -96,28 +96,53 @@
       <div class="container-fluid">
            
         <div class="row">
+          <div class="powerbody">
+            <div class="power-switch">
+              <input type="checkbox" />
+              <div class="button">
+                <svg class="power-off">
+                  <use xlink:href="#pline" class="pline" />
+                  <use xlink:href="#circle" class="circle" />
+                </svg>
+                <svg class="power-on">
+                  <use xlink:href="#pline" class="pline" />
+                  <use xlink:href="#circle" class="circle" />
+                </svg>
+              </div>
+            </div>
+            
+            <!-- SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+              <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 150" id="pline">
+                <line x1="15" y1="15" x2="15" y2="30"/>
+              </symbol>
+              <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 240" id="circle">
+                <circle cx="90" cy="55" r="35"/>
+              </symbol>
+            </svg>     
+          </div>
           <div class="col-sm-1">
             <div class="supercap-container">
               <img src="images/supercaps.png">
           </div>
           </div>
           <div class="col-sm-1">
-            <div id="flowLine" class="flow-line" style="margin-top: 200px; margin-left: 60px;" ></div>
+            <div id="flowLine" class="flow-line" style="margin-top: 200px;" ></div>
           </div>
           <div class="col-sm-1">
-            <div class="controlboard-container" style="margin-top: 175px;">
+            <div class="controlboard-container" style="margin-top: 175px; ">
             <img src="images/Control-board.jpg" ></div>
           </div>
           <div class="col-sm-1">
           </div>          
           <div class="col-sm-4">
           <div id="home" style="width: 180px; height: 180px;  float: left; margin-left: 60px; margin-top: -60px;"></div>
-          <div id="flowLine" class="flow-line" style="margin-top: 180px; margin-left: 130px; rotate: 90deg;" ></div>
+          <div id="flowLine" class="flow-line" style="margin-top: 180px; margin-left: 120px; rotate: 90deg;" ></div>
         </div>
-        <div class="col-sm-4">
-          <div class="tile">
+        <div class="col-sm-2" >
+          <div class="tile" >
             <h3 class="tile-title">Current status</h3>
-            <table class="table">
+            <table class="table table-hover" >
               <thead>
                 <tr>
                   <th></th>
@@ -215,50 +240,32 @@
               <div class="status-led" id="status-led-3"></div>
               <img src="images/Inverter.png"></div>
           </div>
+         
           <div class="col-sm-1">
             <div id="flowLine" class="flow-line" style="margin-top: 160px;" ></div>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-3" >
+            <div class="toglecontainer" style="margin-top: 130px; margin-right: 50px; ">
+              <!-- <div class="buttoncenter"> -->
+              <h7> Battery 1 </h7>
+             <input type="checkbox" name="">
+               <h7> Battery 2 </h7>
+             <input type="checkbox" name=""> 
+              <h7> Battery 3 </h7>
+             <input type="checkbox" name="">
+               <h7> Battery 4 </h7>
+             <input type="checkbox" name=""> 
+            <!-- </div>   -->
+         </div>
             <div id="powerGrid" style="width: 150px; height: 150px;margin-top: -30px;"></div>
             <div class="line" style="margin-top: 10px;"></div>
             <div class="line"></div>
-            <form>
-              <div class="fancy-radio">
-                <input class="fcb-control" id="demo-radio-1" type="radio" name="demogroup"/>
-                <label class="fcb-visual" for="demo-radio-1"><i></i><span class="fcb-label">Battery 1</span>
-                  <div class="clear"></div>
-                </label>
-              </div>
-              <div class="fancy-radio">
-                <input class="fcb-control" id="demo-radio-2" type="radio" name="demogroup" checked="checked"/>
-                <label class="fcb-visual" for="demo-radio-2"><i></i><span class="fcb-label">Battery 2</span>
-                  <div class="clear"></div>
-                </label>
-              </div>
-              <div class="fancy-radio">
-                <input class="fcb-control" id="demo-radio-3" type="radio" name="demogroup"/>
-                <label class="fcb-visual" for="demo-radio-3"><i></i><span class="fcb-label">Battery 3</span>
-                  <div class="clear"></div>
-                </label>
-              </div>
-              <div class="fancy-radio">
-                <input class="fcb-control" id="demo-radio-4" type="radio" name="demogroup"/>
-                <label class="fcb-visual" for="demo-radio-4"><i></i><span class="fcb-label">Battery 4</span>
-                  <div class="clear"></div>
-                </label>
-              </div>
-              <div class="fancy-radio">
-                <input class="fcb-control" id="demo-radio-5" type="radio" name="demogroup"/>
-                <label class="fcb-visual" for="demo-radio-5"><i></i><span class="fcb-label">Battery 5</span>
-                  <div class="clear"></div>
-                </label>
-              </div>
-            </form>
             <div class="video-container">
               <video width="200" height="140" autoplay loop muted>
                 <source src="images/1014.mp4" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
+             
             </div>
           </div>
         </div>
@@ -315,7 +322,19 @@ for (let i = 1; i <= 20; i++) {
   }
 }
 }
+function sendRadioButtonState() {
+    const radioButton = document.getElementById('demo-radio-2');
+    const value = radioButton.checked ? 1 : 0;
 
+    fetch('/update-radio')
+    .then(response => response.json())
+    .then(data => {
+      console.log('Response from server:', data);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  }
 // Example usage
 // Call this function with the data you want to check
 fetchDataAndUpdate(); // Or any data-fetching function
