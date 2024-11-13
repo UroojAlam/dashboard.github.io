@@ -32,6 +32,8 @@ app.use(express.static('public'));
 
 // Use body-parser to parse incoming JSON
 app.use(bodyParser.json());
+app.use(express.text());
+app.use(express.json());
 
 // Endpoint to handle HTTP POST from LabVIEW
 app.post('/receive-data', (req, res) => {
@@ -112,33 +114,40 @@ app.get('/get-all-history', (req, res) => {
 });
 
 const value = new Array(2);
-
+let buttonstate = 0;
 // GET endpoint to retrieve data based on two keys to be used by checkbox buttons
 app.post('/control/', (req, res) => {
     console.log(req.body); 
-    const btid = req.body.btid;
+    // const btid = req.body.btid;
     const cn = req.body.cn;
-    var receiveddata = req.body; 
-    
-    // if(!btid && !cn){
+    // var receiveddata = req.body; 
     value[0]=btid;
     value[1]=cn;
     console.log(value);
-
-    // console.log(receiveddata.btid);
-    // console.log(receiveddata.cn);
     // Send a response
     res.json({ message: 'keys received ', data: value });
 });
 
 // Endpoint to get the latest data
 app.post('/get-btcontrol', (req, res) => {
-    console.log("in get",value);
-    if(value[0]>= 0)
-    {
-    res.json(value); // Return the latest record
-    }     
+    // value[1]=buttonstate;
+    // console.log("in get",value);
+    // if(value[0]>= 0 || value[1]>= 0 )
+    // {
+    // res.json(value); // Return the latest record
+    // } 
+    // buttonstate = 0;
+    res.json(parseInt(buttonstate, 10));
+    console.log("in getbt", buttonstate);
 });
+
+app.post('/update-radio', (req, res) => {
+    const radioState = req.body;
+    buttonstate = radioState;
+    console.log('Received button state:',buttonstate);
+    // res.json({ message: 'Radio state received', buttonstate });
+    res.json({ message: 'Power button state', buttonstate: parseInt(buttonstate, 10) });
+  });
 
 app.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`);
