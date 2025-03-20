@@ -127,7 +127,9 @@
           </div>
           </div>
           <div class="col-sm-1">
-            <div id="flowLine" class="flow-line" style="margin-top: 200px; margin-left: 5px;" ></div>
+            <div id="flowLine" class="flow-line" style="margin-top: 200px; margin-left: 5px;" >
+          <span class="flow-text" style="padding-top: 5px; display: inline-block; animation: moveText 3s linear infinite;"> 55V </span>
+            </div>
           </div>
           <div class="col-sm-1">
             <div class="controlboard-container" style="margin-top: 175px; margin-left: 35px; ">
@@ -136,8 +138,32 @@
           <div class="col-sm-1">
           </div>          
           <div class="col-sm-4">
-          <div id="home" style="width: 180px; height: 180px;  float: left; margin-left: 60px; margin-top: -60px;"></div>
-          <div id="flowLine" class="flow-line" style="margin-top: 180px; margin-left: 120px; rotate: 90deg;" ></div>
+          <div id="home" style="width: 180px; height: 180px;  float: left; margin-left: 60px; margin-top: -60px;"> </div>
+          <div id="flowLine" class="flow-line" style="margin-top: 180px; margin-left: 120px; rotate: -90deg;" >
+            <span class="flow-text" style="padding-top: 5px; display: inline-block; animation: moveHText 8s linear infinite;"> 5.15 kW </span>
+          </div>
+          <style> @keyframes moveHText {
+            0% {
+          transform: translateX(-20px);
+          filter: blur(5px);
+          opacity: 0;
+          }
+          40% {
+          transform: translateX(-30px);
+          filter: blur(2px);
+          opacity: 0.7;
+          }
+          70% {
+          transform: translateX(40px);
+          filter: blur(0);
+          opacity: 1;
+          }
+          100% {
+          transform: translateX(40px);
+           filter: blur(0); 
+          opacity: 1;
+          }
+          }</style>
         </div>
         <div class="col-sm-4" style="margin-left: -60px;" >
           <div class="tile">
@@ -160,7 +186,7 @@
                   <div class="status-led" id="status-led-5" style="margin-left: 0px; margin-top: 5px;"></div>
                   <div class="status-led" id="status-led-6" style="margin-left: 20px; margin-top: 5px;"></div>
                   </td>
-                  <td>--</td>
+                  <td>5.15 kW</td>
                 </tr>
                 <tr>
                   <td>2</td>
@@ -168,7 +194,7 @@
                   <td>
                   <div class="status-led" id="status-led-8" style="margin-left: -20px; margin-top: 5px;"></div>  
                   </td>
-                  <td>--</td>
+                  <td>0 kW</td>
                 </tr>
                 <tr>
                   <td>3</td>
@@ -180,7 +206,7 @@
                   <div class="status-led" id="status-led-11" style="margin-left: 40px; margin-top: 5px;"></div>
                   <div class="status-led" id="status-led-12" style="margin-left: 60px; margin-top: 5px;"></div>  
                   </td>
-                  <td>--</td>
+                  <td>5.2 kW</td>
                 </tr>
               </tbody>
             </table>
@@ -208,11 +234,16 @@
             </div>
           </div>
           <div class="col-sm-1">
-            <div id="flowLine" class="flow-line" style="margin-top: 35px; margin-left: 60px;" ></div>
-            <div id="flowLine" class="flow-line" style="margin-top: 75px; margin-left: 60px;" ></div>
-            <div id="flowLine" class="flow-line" style="margin-top: 75px; margin-left: 60px;" ></div>
-            <div id="flowLine" class="flow-line" style="margin-top: 75px; margin-left: 60px;" ></div>
-            <div id="flowLine" class="flow-line" style="margin-top: 75px; margin-left: 60px;" ></div>
+            <div id="flowLine" class="flow-line" style="margin-top: 35px; margin-left: 60px;">
+            <span class="flow-text" style="padding-top: 5px; display: inline-block; animation: moveText 3s linear infinite;"> 1.042 kW </span> </div>
+            <div id="flowLine" class="flow-line" style="margin-top: 75px; margin-left: 60px;" >
+              <span class="flow-text" style="padding-top: 5px; display: inline-block; animation: moveText 3s linear infinite;"> 1.038 kW </span> </div>
+            <div id="flowLine" class="flow-line" style="margin-top: 75px; margin-left: 60px;" >
+              <span class="flow-text" style="padding-top: 5px; display: inline-block; animation: moveText 3s linear infinite;"> 1.024 kW </span> </div>
+            <div id="flowLine" class="flow-line" style="margin-top: 75px; margin-left: 60px;" >
+              <span class="flow-text" style="padding-top: 5px; display: inline-block; animation: moveText 3s linear infinite;"> 1.042 kW </span> </div>
+            <div id="flowLine" class="flow-line" style="margin-top: 75px; margin-left: 60px;" >
+              <span class="flow-text" style="padding-top: 5px; display: inline-block; animation: moveText 3s linear infinite;"> 1.011 kW </span> </div>
           </div>
           <div class="col-sm-1">
             <div class="controlboard-container" style="margin-top: 10px;">
@@ -227,7 +258,9 @@
               <img src="images/Control-board.jpg" ></div>
           </div>
           <div class="col-sm-1">
-            <div id="flowLine" class="flow-line" style="margin-top: 160px; margin-left: 100px;" ></div>
+            <div id="flowLine" class="flow-line" style="margin-top: 160px; margin-left: 100px;" >  
+              <span class="flow-text" style="padding-top: 5px; display: inline-block; animation: moveText 5s linear infinite;"> 5.2 kW </span>
+            </div>
           </div>
           <div class="col-sm-3">
             <div class="inverter-container">
@@ -242,7 +275,40 @@
           </div>
          
           <div class="col-sm-1">
-            <div id="flowLine" class="flow-line" style="margin-top: 160px;" ></div>
+            <div id="flowLine" class="flow-line" style="margin-top: 160px; rotate: 180deg;" >
+              <div id="flowLine" class="flow-line" style="margin-top: 160px; position: relative;">
+                <span class="flow-text" 
+                      style="display: inline-block; position: absolute; top: -15px; left: 0;
+                             animation: moveSText 2s linear infinite; transform: rotate(180deg);">
+                  252.72V
+                </span>
+              </div>
+              
+              <style> 
+              @keyframes moveSText {
+                0% {
+                  transform: translateX(-20px) rotate(180deg);
+                  filter: blur(5px);
+                  opacity: 0;
+                }
+                40% {
+                  transform: translateX(-30px) rotate(180deg);
+                  filter: blur(2px);
+                  opacity: 0.7;
+                }
+                70% {
+                  transform: translateX(60px) rotate(180deg);
+                  filter: blur(0);
+                  opacity: 1;
+                }
+                100% {
+                  transform: translateX(60px) rotate(180deg);
+                  filter: blur(0); 
+                  opacity: 1;
+                }
+              }
+              </style>
+              </div>
           </div>
           <div class="col-sm-3" >
             <div class="toglecontainer" style="margin-top: 130px; margin-right: 50px; ">
@@ -338,7 +404,7 @@ function updateLEDStatus(data) {
 console.log('Updating LED status with data:', data);
 let dataInt = Number(data);
 console.log('Updating LED status with data int:', dataInt);
-for (let i = 1; i <=7; i++) {
+for (let i = 1; i <=12; i++) {
   const ledElement = [];
   ledElement[i] = document.getElementById(`status-led-${i}`);
 
